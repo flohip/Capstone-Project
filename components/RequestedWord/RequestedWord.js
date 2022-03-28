@@ -1,6 +1,8 @@
+import styled from "styled-components";
+
 const RequestedWord = () => {
-  return <div>RequestedWord</div>;
+  return <Container>RequestedWord</Container>;
 };
 export default RequestedWord;
 
-const StyledDiv = styled.div``;
+const Container = styled.div``;
