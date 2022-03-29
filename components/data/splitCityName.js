@@ -1,14 +1,14 @@
-import { cityData } from "./cityData.json";
-
-console.log(cityData);
-
-//one random number (index) is chosen
+import data from "./cityData.json" assert { type: "json" };
+const cityData = data.Cities;
+//one random number is chosen to render a new word
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
-console.log(getRandomInt(3));
-//the chosen item is mapped, so all letters are split up and saved in an array
+const num = getRandomInt(cityData.length);
+console.log(num);
+//the chosen word is mapped, so all letters are split up and saved in an array
 export default function splitCityName() {
+  const num = getRandomInt(cityData.length);
   const splitFunction = (cityData) => {
     console.log(cityData);
     // let listOfCities = cityData.map(({ cityName }) => {
