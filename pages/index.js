@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import RequestedWord from "../components/RequestedWord/RequestedWord";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -23,10 +24,7 @@ export default function Home() {
           </a>
         </h1>
 
-        <div className={styles.grid}>
-          <h2>Documentation &rarr;</h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </div>
+        <RequestedWord />
       </main>
     </div>
   );

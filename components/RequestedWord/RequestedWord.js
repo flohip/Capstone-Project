@@ -1,20 +1,13 @@
 import styled from "styled-components";
-import { cityData } from "../data/cityData";
+import splitCityName from "../data/splitCityName";
 
 export default function RequestedWord() {
-  let listOfCities = cityData.map(({ cityName, cityCategory }) => {
-    let letters = [];
-    for (var i = 0; i < cityName.length; i++) {
-      letters.push(cityName[i]);
-    }
-    return letters;
-  });
-  console.log(listOfCities);
+  // splitCityName();
   return (
     <Container>
-      {listOfCities.map((letter) => (
+      {/* {listOfCities.map((letter) => (
         <StyledLi key={letter}>{letter}</StyledLi>
-      ))}
+      ))} */}
     </Container>
   );
 }
@@ -33,6 +26,7 @@ const StyledLi = styled.li`
   gap: 0.3rem;
   background-color: green;
   color: white;
+  list-style-type: none;
 
   :nth-child(2) {
     background-color: yellow;
