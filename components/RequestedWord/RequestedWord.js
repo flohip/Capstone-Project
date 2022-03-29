@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-const RequestedWord = () => {
+export default function RequestedWord() {
   return <Container>RequestedWord</Container>;
-};
-export default RequestedWord;
+}
 
-const Container = styled.div``;
+const Container = styled.div`
+  background-color: red;
+  color: white;
+`;
