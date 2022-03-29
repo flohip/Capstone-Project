@@ -1,4 +1,4 @@
-export const listOfCities = [
+export const cityData = [
   { cityName: "Koeln", cityCategory: "Stadt in Deutschland" },
   { cityName: "Stuttgart", cityCategory: "Stadt in Deutschland" },
   { cityName: "Hamburg", cityCategory: "Stadt in Deutschland" },

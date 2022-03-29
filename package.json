@@ -28,8 +28,10 @@
     "@storybook/react": "^6.4.19",
     "@storybook/testing-library": "^0.0.9",
     "babel-loader": "^8.2.4",
+    "babel-plugin-styled-components": "^2.0.6",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
+    "eslint-plugin-storybook": "^0.5.7",
     "jest": "^27.5.1"
   }
 }
