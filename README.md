@@ -2,13 +2,14 @@
 
 ## Die App benutzt folgende Technologien:
 
-- React
-- next.js
-- MongoDB
+- next.js + React
+- StoryBook
+- Git
+- Styled-Components
+- Jest
 
 ## Funktionsweise des Spiels:
 
-Die App ist ein Brettspiel bei dem der Spieler Wörter erraten muss und für erratene Buchstaben Punkte erhält,
-welche wie die Augenanzahl eines normalen Würfelwurf gezählt werden.
+Die App ist ein Quiz-Ratespiel bei dem der Spieler Wörter erraten muss und für erratene Buchstaben Sekunden als Gutschrift erhält um länger im Spiel zu bleiben.
 
 <br>

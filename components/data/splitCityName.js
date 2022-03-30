@@ -1,4 +1,4 @@
-import data from "./cityData.json" assert { type: "json" };
+import data from "./cityData";
 const cityData = data.Cities;
 //one random number is chosen to render a new word
 function getRandomInt(max) {
