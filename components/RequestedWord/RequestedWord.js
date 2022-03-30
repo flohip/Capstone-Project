@@ -5,37 +5,48 @@ import { useEffect, useState } from "react";
 
 export default function RequestedWord() {
   const [requestedWord, setRequestedWord] = useState([]);
+  const [isShown, setIsShown] = useState(true);
   useEffect(() => {
     setRequestedWord(splitDataName(data));
   }, []);
   console.log(requestedWord);
   return (
-    <Container>
+    <StyledUl>
       {requestedWord.map((letter, index) => (
-        <StyledLi key={index}>{letter}</StyledLi>
+        <StyledLi key={index}>{isShown ? letter : null}</StyledLi>
       ))}
-    </Container>
+    </StyledUl>
   );
 }
 
-const Container = styled.ul`
+const StyledUl = styled.ul`
   width: fit-content;
   max-width: 80vw;
   padding: 0.3rem;
-  color: white;
+  /* color: white; */
   display: flex;
-  flex-wrap: nowrap;
-  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
 `;
 const StyledLi = styled.li`
   font-size: inherit;
-  font-size: calc(inherit * 2);
   width: fit-content;
-  padding: 0.3rem;
+  min-height: 60px;
+  min-width: 50px;
+  padding: 1rem;
   gap: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--fontColor);
+  border: 3px solid var(--backgroundColor);
+  box-shadow: 2px 2px 2px 0px black;
   list-style-type: none;
-  > li:hover {
-    border: 0.3rem solid green;
+  :hover {
+    background-color: var(--fontColor);
+    color: var(--backgroundColor);
+    cursor: pointer;
   }
 `;
