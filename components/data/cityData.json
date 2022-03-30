@@ -1,16 +1,18 @@
-{
-  "Cities": [
-    {
-      "cityName": "Koeln",
-      "cityCategory": "Stadt in Deutschland"
-    },
-    {
-      "cityName": "Stuttgart",
-      "cityCategory": "Stadt in Deutschland"
-    },
-    {
-      "cityName": "Hamburg",
-      "cityCategory": "Stadt in Deutschland"
-    }
-  ]
-}
+[
+  {
+    "name": "Koeln",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "name": "Stuttgart",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "name": "Hamburg",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "name": "Berlin",
+    "category": "Stadt in Deutschland"
+  }
+]
