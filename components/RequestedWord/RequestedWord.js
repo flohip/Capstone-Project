@@ -9,7 +9,6 @@ export default function RequestedWord() {
   useEffect(() => {
     setRequestedWord(splitDataName(data));
   }, []);
-  console.log(requestedWord);
   return (
     <StyledUl>
       {requestedWord.map((letter, index) => (
@@ -23,7 +22,6 @@ const StyledUl = styled.ul`
   width: fit-content;
   max-width: 80vw;
   padding: 0.3rem;
-  /* color: white; */
   display: flex;
   justify-content: center;
   align-items: center;
