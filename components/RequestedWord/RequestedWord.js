@@ -1,20 +1,23 @@
 import styled from "styled-components";
-import splitDataName from "../data/splitDataName.js";
-import data from "../data/cityData.json";
+import splitDataName from "./splitDataName.js";
 import { useEffect, useState } from "react";
 
-export default function RequestedWord() {
+export default function RequestedWord({ data, num }) {
   const [requestedWord, setRequestedWord] = useState([]);
   const [isShown, setIsShown] = useState(true);
+
   useEffect(() => {
-    setRequestedWord(splitDataName(data));
-  }, []);
+    setRequestedWord(splitDataName(data, num));
+  }, [data, num]);
+
   return (
-    <StyledUl>
-      {requestedWord.map((letter, index) => (
-        <StyledLi key={index}>{isShown ? letter : null}</StyledLi>
-      ))}
-    </StyledUl>
+    <>
+      <StyledUl>
+        {requestedWord.map((letter, index) => (
+          <StyledLi key={index}>{isShown ? letter : null}</StyledLi>
+        ))}
+      </StyledUl>
+    </>
   );
 }
 
@@ -42,9 +45,4 @@ const StyledLi = styled.li`
   border: 3px solid var(--backgroundColor);
   box-shadow: 2px 2px 2px 0px black;
   list-style-type: none;
-  :hover {
-    background-color: var(--fontColor);
-    color: var(--backgroundColor);
-    cursor: pointer;
-  }
 `;

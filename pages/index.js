@@ -1,9 +1,13 @@
 import Head from "next/head";
-import Image from "next/image";
 import styled from "styled-components";
 import RequestedWord from "../components/RequestedWord/RequestedWord";
+import WordCategory from "../components/WordCategory/WordCategory";
+import getRandomInt from "../utils/getRandomInt";
+import data from "../data/cityData.json";
 
 export default function Home() {
+  const num = getRandomInt(data.length);
+
   return (
     <>
       <Head>
@@ -22,7 +26,8 @@ export default function Home() {
         </a>
       </Header>
       <StyledMain>
-        <RequestedWord />
+        <WordCategory data={data} num={num} />
+        <RequestedWord data={data} num={num} />
       </StyledMain>
     </>
   );
@@ -45,6 +50,7 @@ const StyledMain = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: inherit;
 `;
 
 const Header = styled.h1`
