@@ -6,7 +6,7 @@ export default function WordCategory({ data, num }) {
 
   useEffect(() => {
     setWordCategory(data[num].category);
-  }, []);
+  }, [data, num]);
 
   return (
     <>

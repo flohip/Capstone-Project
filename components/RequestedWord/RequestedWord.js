@@ -8,7 +8,7 @@ export default function RequestedWord({ data, num }) {
 
   useEffect(() => {
     setRequestedWord(splitDataName(data, num));
-  }, []);
+  }, [data, num]);
 
   return (
     <>
@@ -45,9 +45,4 @@ const StyledLi = styled.li`
   border: 3px solid var(--backgroundColor);
   box-shadow: 2px 2px 2px 0px black;
   list-style-type: none;
-  :hover {
-    background-color: var(--fontColor);
-    color: var(--backgroundColor);
-    cursor: pointer;
-  }
 `;
