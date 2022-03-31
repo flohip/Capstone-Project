@@ -1,41 +1,50 @@
 import styled from "styled-components";
-import { cityData } from "../data/cityData";
+import splitDataName from "../data/splitDataName.js";
+import data from "../data/cityData.json";
+import { useEffect, useState } from "react";
 
 export default function RequestedWord() {
-  let listOfCities = cityData.map(({ cityName, cityCategory }) => {
-    let letters = [];
-    for (var i = 0; i < cityName.length; i++) {
-      letters.push(cityName[i]);
-    }
-    return letters;
-  });
-  console.log(listOfCities);
+  const [requestedWord, setRequestedWord] = useState([]);
+  const [isShown, setIsShown] = useState(true);
+  useEffect(() => {
+    setRequestedWord(splitDataName(data));
+  }, []);
   return (
-    <Container>
-      {listOfCities.map((letter) => (
-        <StyledLi key={letter}>{letter}</StyledLi>
+    <StyledUl>
+      {requestedWord.map((letter, index) => (
+        <StyledLi key={index}>{isShown ? letter : null}</StyledLi>
       ))}
-    </Container>
+    </StyledUl>
   );
 }
 
-const Container = styled.div`
+const StyledUl = styled.ul`
   width: fit-content;
   max-width: 80vw;
   padding: 0.3rem;
-  background-color: red;
-  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
 `;
 const StyledLi = styled.li`
+  font-size: inherit;
   width: fit-content;
-  max-width: 80vw;
+  min-height: 60px;
+  min-width: 50px;
   padding: 1rem;
   gap: 0.3rem;
-  background-color: green;
-  color: white;
-
-  :nth-child(2) {
-    background-color: yellow;
-    color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--fontColor);
+  border: 3px solid var(--backgroundColor);
+  box-shadow: 2px 2px 2px 0px black;
+  list-style-type: none;
+  :hover {
+    background-color: var(--fontColor);
+    color: var(--backgroundColor);
+    cursor: pointer;
   }
 `;
