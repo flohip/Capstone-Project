@@ -4,6 +4,7 @@ import RequestedWord from "../components/RequestedWord/RequestedWord";
 import WordCategory from "../components/WordCategory/WordCategory";
 import getRandomInt from "../utils/getRandomInt";
 import data from "../data/cityData.json";
+import { InputFields } from "../components/InputFields/InputFields";
 
 export default function Home() {
   const num = getRandomInt(data.length);
@@ -28,6 +29,7 @@ export default function Home() {
       <StyledMain>
         <WordCategory data={data} num={num} />
         <RequestedWord data={data} num={num} />
+        <InputFields />
       </StyledMain>
     </>
   );
@@ -51,6 +53,7 @@ const StyledMain = styled.main`
   justify-content: center;
   align-items: center;
   background: inherit;
+  overflow: auto;
 `;
 
 const Header = styled.h1`
