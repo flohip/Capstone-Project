@@ -1,55 +1,106 @@
 import { useState } from "react";
 import styled from "styled-components";
 
+function handleClick(e, name, state, keyboardKeys, setkeyboardKeys) {
+  console.log(`button ${e.target.textContent} was clicked`);
+  const keyName = keyboardKeys.filter((key) => key.name === name);
+  console.log(keyName);
+  console.log(keyboardKeys);
+  setkeyboardKeys(...keys);
+}
+//Each Button has different states
+// "inactive", "active", "correct", "wrong"
 export const InputFields = () => {
-  const topKeys = keyboardTopRow.map((key, index) => {
-    return (
-      <StyledTopKeys key={"TopRow"}>
-        <button key={index}>{key}</button>
-      </StyledTopKeys>
-    );
-  });
-  const middleKeys = keyboardMidRow.map((key, index) => {
-    return (
-      <StyledMidKeys key={"MiddleRow"}>
-        <button key={index}>{key}</button>
-      </StyledMidKeys>
-    );
-  });
-  const bottomKeys = keyboardBottomRow.map((key, index) => {
-    return (
-      <StyledBottomKeys key={"BottomRow"}>
-        <button key={index}>{key}</button>
-      </StyledBottomKeys>
-    );
-  });
+  const [keyboardKeys, setkeyboardKeys] = useState(initialState);
 
   return (
-    <StyledLetters>
-      {topKeys}
-      {middleKeys}
-      {bottomKeys}
-    </StyledLetters>
+    <StyledKeyboard>
+      {keyboardKeys.map(({ name, state }) => {
+        return (
+          <StyledKeys
+            onClick={(e) =>
+              handleClick(e, name, state, keyboardKeys, setkeyboardKeys)
+            }
+            key={name}
+          >
+            {name}
+          </StyledKeys>
+        );
+      })}
+    </StyledKeyboard>
   );
 };
 
-const StyledLetters = styled.div`
+const StyledKeyboard = styled.div`
   padding: 1rem;
-  background-color: grey;
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+  display: grid;
+  justify-content: center;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(11, 90px);
+    grid-template-rows: repeat(3, 99px);
+  }
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(11, 50px);
+    grid-template-rows: repeat(3, 59px);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(11, 30px);
+    grid-template-rows: repeat(3, 39px);
+  }
 `;
 
-const StyledTopKeys = styled.div`
+const StyledKeys = styled.button`
+  @media (min-width: 1024px) {
+    width: 90px;
+    margin: 6px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 50px;
+    margin: 4px;
+  }
+  @media (max-width: 600px) {
+    width: 25px;
+    margin: 2px;
+  }
+
+  width: inherit;
+  height: inherit;
   display: flex;
-`;
-const StyledMidKeys = styled.div`
-  display: flex;
-`;
-const StyledBottomKeys = styled.div`
-  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-const keyboardTopRow = ["Q", "W", "E", "R", "T", "Z", "U", "I", "O", "P", "Ü"];
-const keyboardMidRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Ö", "Ä"];
-const keyboardBottomRow = ["Y", "X", "C", "V", "B", "N", "M"];
+const initialState = [
+  { name: "Q", state: "inactive" },
+  { name: "W", state: "inactive" },
+  { name: "E", state: "inactive" },
+  { name: "R", state: "inactive" },
+  { name: "T", state: "inactive" },
+  { name: "Z", state: "inactive" },
+  { name: "U", state: "inactive" },
+  { name: "I", state: "inactive" },
+  { name: "O", state: "inactive" },
+  { name: "P", state: "inactive" },
+  { name: "Ü", state: "inactive" },
+  { name: "A", state: "inactive" },
+  { name: "S", state: "inactive" },
+  { name: "D", state: "inactive" },
+  { name: "F", state: "inactive" },
+  { name: "G", state: "inactive" },
+  { name: "H", state: "inactive" },
+  { name: "J", state: "inactive" },
+  { name: "K", state: "inactive" },
+  { name: "L", state: "inactive" },
+  { name: "Ö", state: "inactive" },
+  { name: "Ä", state: "inactive" },
+  { name: "Y", state: "inactive" },
+  { name: "X", state: "inactive" },
+  { name: "C", state: "inactive" },
+  { name: "V", state: "inactive" },
+  { name: "B", state: "inactive" },
+  { name: "N", state: "inactive" },
+  { name: "M", state: "inactive" },
+];

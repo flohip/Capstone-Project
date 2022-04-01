@@ -53,7 +53,7 @@ const StyledMain = styled.main`
   justify-content: center;
   align-items: center;
   background: inherit;
-  overflow: auto;
+  /* overflow: auto; */
 `;
 
 const Header = styled.h1`
