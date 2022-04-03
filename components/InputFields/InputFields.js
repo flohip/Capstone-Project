@@ -1,30 +1,59 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-function handleClick(e, name, state, keyboardKeys, setkeyboardKeys) {
-  console.log(`button ${e.target.textContent} was clicked`);
-  const keyName = keyboardKeys.filter((key) => key.name === name);
-  console.log(keyName);
+function handleClick(name, keyboardKeys, setkeyboardKeys) {
   console.log(keyboardKeys);
-  setkeyboardKeys(...keys);
+  setkeyboardKeys(
+    keyboardKeys.map((key) => {
+      if (key.name === name) {
+        return { ...key, state: "active" };
+      } else {
+        return key;
+      }
+    })
+  );
+}
+function checkState(state) {
+  console.log(state);
+  const returnState = state;
+  if (state === "inactive") {
+    returnState = { backgroundColor: "white" };
+  } else if (state === "active") {
+    returnState = { backgroundColor: "blue" };
+  } else if (state === "correct") {
+    returnState = { backgroundColor: "green" };
+  } else if (state === "wrong") {
+    returnState = { backgroundColor: "grey" };
+  }
+  return returnState;
 }
 //Each Button has different states
 // "inactive", "active", "correct", "wrong"
 export const InputFields = () => {
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
-
   return (
     <StyledKeyboard>
       {keyboardKeys.map(({ name, state }) => {
+        let currentState;
+        if (state === "inactive") {
+          currentState = true;
+        } else if (state === "active") {
+          currentState = false;
+        }
+
         return (
-          <StyledKeys
-            onClick={(e) =>
-              handleClick(e, name, state, keyboardKeys, setkeyboardKeys)
-            }
+          <StyledButtons
+            onClick={(e) => handleClick(name, keyboardKeys, setkeyboardKeys)}
             key={name}
+            // style={() => checkState(state)}
+            style={
+              currentState
+                ? { backgroundColor: "white" }
+                : { backgroundColor: "blue", color: "white" }
+            }
           >
             {name}
-          </StyledKeys>
+          </StyledButtons>
         );
       })}
     </StyledKeyboard>
@@ -51,7 +80,7 @@ const StyledKeyboard = styled.div`
   }
 `;
 
-const StyledKeys = styled.button`
+const StyledButtons = styled.button`
   @media (min-width: 1024px) {
     width: 90px;
     margin: 6px;
