@@ -42,7 +42,7 @@ function handleClick(name, keyboardKeys, setkeyboardKeys) {
 function checkState(state) {
   let returnState;
   if (state === "inactive") {
-    returnState = { backgroundColor: "white" };
+    returnState = { backgroundColor: "var(--fontColor)" };
   } else if (state === "active") {
     returnState = { backgroundColor: "blue", color: "white" };
   } else if (state === "correct") {
@@ -62,11 +62,11 @@ const StyledKeyboard = styled.div`
 
   @media (min-width: 600px) {
     grid-template-columns: repeat(11, 50px);
-    grid-template-rows: repeat(3, 59px);
+    grid-template-rows: repeat(3, 60px);
   }
   @media (max-width: 600px) {
     grid-template-columns: repeat(11, 30px);
-    grid-template-rows: repeat(3, 39px);
+    grid-template-rows: repeat(3, 36px);
   }
 `;
 

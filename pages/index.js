@@ -68,7 +68,7 @@ const Header = styled.h1`
   @media (max-width: 600px) {
     font-size: 1.5rem;
   }
-  color: steelblue;
+  color: var(--fontColor);
   margin-bottom: 1rem;
   font-size: inherit;
   text-align: center;

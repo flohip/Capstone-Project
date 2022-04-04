@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 export default function RequestedWord({ data, num }) {
   const [requestedWord, setRequestedWord] = useState([]);
   const [isShown, setIsShown] = useState(true);
+  function toggleClickHandler() {
+    setIsShown(!isShown);
+  }
 
   useEffect(() => {
     setRequestedWord(splitDataName(data, num));
@@ -17,9 +20,17 @@ export default function RequestedWord({ data, num }) {
           <StyledLi key={index}>{isShown ? letter : null}</StyledLi>
         ))}
       </StyledUl>
+      <ToggleButton onClick={toggleClickHandler}>
+        hide requested word
+      </ToggleButton>
     </>
   );
 }
+
+const ToggleButton = styled.button`
+  height: 30px;
+  width: 150px;
+`;
 
 const StyledUl = styled.ul`
   width: fit-content;
@@ -34,8 +45,8 @@ const StyledUl = styled.ul`
 const StyledLi = styled.li`
   font-size: inherit;
   width: fit-content;
-  min-height: 60px;
-  min-width: 50px;
+  min-height: 76px;
+  min-width: 65px;
   padding: 1rem;
   gap: 0.3rem;
   display: flex;
@@ -43,6 +54,7 @@ const StyledLi = styled.li`
   align-items: center;
   color: var(--fontColor);
   border: 3px solid var(--backgroundColor);
+
   box-shadow: 2px 2px 2px 0px black;
   list-style-type: none;
 `;
