@@ -5,10 +5,12 @@ import WordCategory from "../components/WordCategory/WordCategory";
 import getRandomInt from "../utils/getRandomInt";
 import data from "../data/cityData.json";
 import { Keyboard } from "../components/Keyboard/Keyboard";
-import { EnterButton } from "../components/Button/EnterButton";
 
-export default function Home() {
+export default function Home({ getActiveKey }) {
   const num = getRandomInt(data.length);
+  const activeKey = getActiveKey;
+  // const submitGuess = () => checkGuess(activeKey);
+  let submitGuess;
 
   return (
     <>
@@ -34,7 +36,6 @@ export default function Home() {
         <WordCategory data={data} num={num} />
         <RequestedWord data={data} num={num} />
         <Keyboard />
-        <EnterButton />
       </StyledMain>
     </>
   );

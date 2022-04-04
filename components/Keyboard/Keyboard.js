@@ -1,27 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { EnterButton } from "../Button/EnterButton";
 import { Key } from "./Key";
 
 export const Keyboard = () => {
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
+  const [submittedGuess, setSubmittedGuess] = useState({});
+  console.log(submittedGuess);
   return (
-    <StyledKeyboard>
-      {keyboardKeys.map(({ name, state }) => {
-        const currentStyle = checkState(state);
-
-        return (
-          <Key
-            onClick={(e) => handleClick(name, keyboardKeys, setkeyboardKeys)}
-            key={name}
-            name={name}
-            style={currentStyle}
-          />
-        );
-      })}
-    </StyledKeyboard>
+    <>
+      <StyledKeyboard>
+        {keyboardKeys.map(({ name, state }) => {
+          const currentStyle = checkState(state);
+          return (
+            <Key
+              onClick={() => handleClick(name, keyboardKeys, setkeyboardKeys)}
+              key={name}
+              name={name}
+              style={currentStyle}
+            />
+          );
+        })}
+      </StyledKeyboard>
+      <EnterButton
+        submitGuess={(submittedGuess) =>
+          setSubmittedGuess(getActiveKey(keyboardKeys))
+        }
+      />
+    </>
   );
 };
-
+function getActiveKey(keyboardKeys) {
+  const key = keyboardKeys.filter((key) => {
+    return key.state === "active" ? key : null;
+  });
+  return key;
+}
 function handleClick(name, keyboardKeys, setkeyboardKeys) {
   setkeyboardKeys(
     keyboardKeys.map((key) => {
@@ -56,7 +70,7 @@ function checkState(state) {
 
 const StyledKeyboard = styled.div`
   padding: 1rem;
-  width: 100%;
+  width: 95%;
   display: grid;
   justify-content: center;
 

@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 export default function RequestedWord({ data, num }) {
   const [requestedWord, setRequestedWord] = useState([]);
   const [isShown, setIsShown] = useState(true);
+
+  //for test purposes
   function toggleClickHandler() {
     setIsShown(!isShown);
   }
@@ -21,7 +23,7 @@ export default function RequestedWord({ data, num }) {
         ))}
       </StyledUl>
       <ToggleButton onClick={toggleClickHandler}>
-        hide requested word
+        hide / show requested word
       </ToggleButton>
     </>
   );
@@ -29,12 +31,13 @@ export default function RequestedWord({ data, num }) {
 
 const ToggleButton = styled.button`
   height: 30px;
-  width: 150px;
+  width: 200px;
+  border-radius: 5px;
 `;
 
 const StyledUl = styled.ul`
   width: fit-content;
-  max-width: 80vw;
+  max-width: 95%;
   padding: 0.3rem;
   display: flex;
   justify-content: center;
@@ -44,11 +47,16 @@ const StyledUl = styled.ul`
 `;
 const StyledLi = styled.li`
   font-size: inherit;
-  width: fit-content;
-  min-height: 76px;
-  min-width: 65px;
-  padding: 1rem;
-  gap: 0.3rem;
+  @media (min-width: 600px) {
+    min-height: 60px;
+    min-width: 45px;
+    border-radius: 6px;
+  }
+  @media (max-width: 600px) {
+    min-height: 32px;
+    min-width: 24px;
+    border-radius: 4px;
+  }
   display: flex;
   justify-content: center;
   align-items: center;

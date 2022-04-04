@@ -1,34 +1,102 @@
 [
   {
-    "name": "Köln",
-    "category": "Stadt in Deutschland"
-  },
-  {
-    "name": "Stuttgart",
-    "category": "Stadt in Deutschland"
-  },
-  {
-    "name": "Hamburg",
-    "category": "Stadt in Deutschland"
-  },
-  {
+    "id": "1",
     "name": "Berlin",
     "category": "Stadt in Deutschland"
   },
   {
-    "name": "Hannover",
+    "id": "2",
+    "name": "Hamburg",
     "category": "Stadt in Deutschland"
   },
   {
-    "name": "Frankfurt",
-    "category": "Stadt in Deutschland"
-  },
-  {
+    "id": "3",
     "name": "München",
     "category": "Stadt in Deutschland"
   },
   {
+    "id": "4",
+    "name": "Köln",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "5",
+    "name": "Frankfurt",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "6",
+    "name": "Stuttgart",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "7",
+    "name": "Düsseldorf",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "8",
+    "name": "Dortmund",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "9",
+    "name": "Essen",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "10",
+    "name": "Leipzig",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "11",
+    "name": "Bremen",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "12",
     "name": "Dresden",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "13",
+    "name": "Hannover",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "14",
+    "name": "Nürnberg",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "15",
+    "name": "Duisburg",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "16",
+    "name": "Bochum",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "17",
+    "name": "Wuppertal",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "18",
+    "name": "Bielefeld",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "19",
+    "name": "Bonn",
+    "category": "Stadt in Deutschland"
+  },
+  {
+    "id": "20",
+    "name": "Münster",
     "category": "Stadt in Deutschland"
   }
 ]
