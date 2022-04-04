@@ -1,10 +1,33 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { Key } from "./Key";
+
+export const Keyboard = () => {
+  const [keyboardKeys, setkeyboardKeys] = useState(initialState);
+  return (
+    <StyledKeyboard>
+      {keyboardKeys.map(({ name, state }) => {
+        const currentStyle = checkState(state);
+
+        return (
+          <Key
+            onClick={(e) => handleClick(name, keyboardKeys, setkeyboardKeys)}
+            key={name}
+            name={name}
+            style={currentStyle}
+          />
+        );
+      })}
+    </StyledKeyboard>
+  );
+};
 
 function handleClick(name, keyboardKeys, setkeyboardKeys) {
-  console.log(keyboardKeys);
   setkeyboardKeys(
     keyboardKeys.map((key) => {
+      if (key.state === "active") {
+        key.state = "inactive";
+      }
       if (key.name === name) {
         return { ...key, state: "active" };
       } else {
@@ -13,52 +36,23 @@ function handleClick(name, keyboardKeys, setkeyboardKeys) {
     })
   );
 }
+
+//Each Button has different states
+// "inactive", "active", "correct", "wrong"
 function checkState(state) {
-  console.log(state);
-  const returnState = state;
+  let returnState;
   if (state === "inactive") {
     returnState = { backgroundColor: "white" };
   } else if (state === "active") {
-    returnState = { backgroundColor: "blue" };
+    returnState = { backgroundColor: "blue", color: "white" };
   } else if (state === "correct") {
-    returnState = { backgroundColor: "green" };
+    returnState = { backgroundColor: "green", color: "white" };
   } else if (state === "wrong") {
     returnState = { backgroundColor: "grey" };
   }
+
   return returnState;
 }
-//Each Button has different states
-// "inactive", "active", "correct", "wrong"
-export const InputFields = () => {
-  const [keyboardKeys, setkeyboardKeys] = useState(initialState);
-  return (
-    <StyledKeyboard>
-      {keyboardKeys.map(({ name, state }) => {
-        let currentState;
-        if (state === "inactive") {
-          currentState = true;
-        } else if (state === "active") {
-          currentState = false;
-        }
-
-        return (
-          <StyledButtons
-            onClick={(e) => handleClick(name, keyboardKeys, setkeyboardKeys)}
-            key={name}
-            // style={() => checkState(state)}
-            style={
-              currentState
-                ? { backgroundColor: "white" }
-                : { backgroundColor: "blue", color: "white" }
-            }
-          >
-            {name}
-          </StyledButtons>
-        );
-      })}
-    </StyledKeyboard>
-  );
-};
 
 const StyledKeyboard = styled.div`
   padding: 1rem;
@@ -66,11 +60,7 @@ const StyledKeyboard = styled.div`
   display: grid;
   justify-content: center;
 
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(11, 90px);
-    grid-template-rows: repeat(3, 99px);
-  }
-  @media (max-width: 1024px) {
+  @media (min-width: 600px) {
     grid-template-columns: repeat(11, 50px);
     grid-template-rows: repeat(3, 59px);
   }
@@ -78,28 +68,6 @@ const StyledKeyboard = styled.div`
     grid-template-columns: repeat(11, 30px);
     grid-template-rows: repeat(3, 39px);
   }
-`;
-
-const StyledButtons = styled.button`
-  @media (min-width: 1024px) {
-    width: 90px;
-    margin: 6px;
-  }
-
-  @media (max-width: 1024px) {
-    width: 50px;
-    margin: 4px;
-  }
-  @media (max-width: 600px) {
-    width: 25px;
-    margin: 2px;
-  }
-
-  width: inherit;
-  height: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const initialState = [

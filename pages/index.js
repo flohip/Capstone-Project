@@ -4,7 +4,8 @@ import RequestedWord from "../components/RequestedWord/RequestedWord";
 import WordCategory from "../components/WordCategory/WordCategory";
 import getRandomInt from "../utils/getRandomInt";
 import data from "../data/cityData.json";
-import { InputFields } from "../components/InputFields/InputFields";
+import { Keyboard } from "../components/Keyboard/Keyboard";
+import { EnterButton } from "../components/Button/EnterButton";
 
 export default function Home() {
   const num = getRandomInt(data.length);
@@ -32,23 +33,22 @@ export default function Home() {
       <StyledMain>
         <WordCategory data={data} num={num} />
         <RequestedWord data={data} num={num} />
-        <InputFields />
+        <Keyboard />
+        <EnterButton />
       </StyledMain>
     </>
   );
 }
 
 const StyledMain = styled.main`
-  @media (min-width: 1024px) {
-    font-size: 3rem;
-  }
-  @media (max-width: 1024px) {
+  @media (min-width: 600px) {
     font-size: 2rem;
   }
   @media (max-width: 600px) {
     font-size: 1rem;
   }
   min-height: 100vh;
+  margin-top: 1rem;
   padding: 4rem 0;
   flex: 1;
   display: flex;
@@ -56,23 +56,21 @@ const StyledMain = styled.main`
   justify-content: center;
   align-items: center;
   background: inherit;
-  /* overflow: auto; */
 `;
 
 const Header = styled.h1`
   @media (min-width: 1024px) {
-    font-size: 4rem;
-  }
-  @media (max-width: 1024px) {
     font-size: 3rem;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 1024px) {
     font-size: 2rem;
   }
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
   color: steelblue;
-  margin: 0;
+  margin-bottom: 1rem;
   font-size: inherit;
-  line-height: 1.15;
   text-align: center;
 
   position: fixed;
