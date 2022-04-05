@@ -1,17 +1,34 @@
 import Head from "next/head";
 import styled from "styled-components";
-import RequestedWord from "../components/RequestedWord/RequestedWord";
 import WordCategory from "../components/WordCategory/WordCategory";
-import getRandomInt from "../utils/getRandomInt";
+import RequestedWord from "../components/RequestedWord/RequestedWord";
+import Keyboard from "../components/Keyboard/Keyboard";
 import data from "../data/cityData.json";
-import { Keyboard } from "../components/Keyboard/Keyboard";
+import getRandomInt from "../utils/getRandomInt";
+import { useEffect, useState } from "react";
+import splitDataName from "../components/RequestedWord/splitDataName";
+import { checkGuess } from "../utils/checkGuess";
 
-export default function Home({ getActiveKey }) {
-  const num = getRandomInt(data.length);
-  const activeKey = getActiveKey;
-  // const submitGuess = () => checkGuess(activeKey);
-  let submitGuess;
+export default function Home({}) {
+  const [num, setNum] = useState(Number);
+  const [requestedWord, setRequestedWord] = useState([]);
+  const [submittedGuess, setSubmittedGuess] = useState(null);
+  const [checkedGuessArray, setCheckedGuessArray] = useState();
+  useEffect(() => {
+    setNum(getRandomInt(data.length));
+  }, []);
 
+  useEffect(() => {
+    const word = splitDataName(data, num);
+    setRequestedWord(word);
+  }, [num]);
+
+  //Check the submitted guess
+  function onSubmitCheck() {
+    setCheckedGuessArray(checkGuess(requestedWord, submittedGuess));
+  }
+
+  console.log("checkedGuessArray: ", checkedGuessArray);
   return (
     <>
       <Head>
@@ -34,8 +51,11 @@ export default function Home({ getActiveKey }) {
       </Header>
       <StyledMain>
         <WordCategory data={data} num={num} />
-        <RequestedWord data={data} num={num} />
-        <Keyboard />
+        <RequestedWord data={data} num={num} requestedWord={requestedWord} />
+        <Keyboard
+          setSubmittedGuess={setSubmittedGuess}
+          onSubmitCheck={onSubmitCheck}
+        />
       </StyledMain>
     </>
   );

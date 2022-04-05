@@ -1,19 +1,13 @@
 import styled from "styled-components";
-import splitDataName from "./splitDataName.js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function RequestedWord({ data, num }) {
-  const [requestedWord, setRequestedWord] = useState([]);
+export default function RequestedWord({ requestedWord }) {
   const [isShown, setIsShown] = useState(true);
 
   //for test purposes
   function toggleClickHandler() {
     setIsShown(!isShown);
   }
-
-  useEffect(() => {
-    setRequestedWord(splitDataName(data, num));
-  }, [data, num]);
 
   return (
     <>

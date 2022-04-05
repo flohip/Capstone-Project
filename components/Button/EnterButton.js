@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
-export const EnterButton = ({ submitGuess }) => {
-  return <StyledButton onClick={submitGuess}>Eingabe</StyledButton>;
-};
+export default function EnterButton({ onSubmitGuess, onSubmitCheck }) {
+  function callFunctions() {
+    onSubmitGuess();
+    onSubmitCheck();
+  }
+  return <StyledButton onClick={callFunctions}>Eingabe</StyledButton>;
+}
 const StyledButton = styled.button`
   @media (min-width: 600px) {
     width: 300px;

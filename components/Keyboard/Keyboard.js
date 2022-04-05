@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import { EnterButton } from "../Button/EnterButton";
-import { Key } from "./Key";
+import Key from "./Key";
+import EnterButton from "../Button/EnterButton";
 
-export const Keyboard = () => {
+export default function Keyboard({ setSubmittedGuess, onSubmitCheck }) {
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
-  const [submittedGuess, setSubmittedGuess] = useState({});
-  console.log(submittedGuess);
   return (
     <>
       <StyledKeyboard>
@@ -23,18 +21,22 @@ export const Keyboard = () => {
         })}
       </StyledKeyboard>
       <EnterButton
-        submitGuess={(submittedGuess) =>
-          setSubmittedGuess(getActiveKey(keyboardKeys))
-        }
+        onSubmitGuess={(e) => setSubmittedGuess(getActiveKey(keyboardKeys))}
+        onSubmitCheck={onSubmitCheck}
       />
     </>
   );
-};
-function getActiveKey(keyboardKeys) {
-  const key = keyboardKeys.filter((key) => {
-    return key.state === "active" ? key : null;
+}
+
+function getActiveKey(keys) {
+  let activeKey;
+  keys.filter((key) => {
+    if (key.state === "active") {
+      activeKey = key;
+    }
   });
-  return key;
+
+  return activeKey;
 }
 function handleClick(name, keyboardKeys, setkeyboardKeys) {
   setkeyboardKeys(

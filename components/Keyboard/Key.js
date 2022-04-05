@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const Key = ({ onClick, name, style }) => {
+export default function Key({ onClick, name, style }) {
   return (
     <StyledButtons onClick={onClick} style={style}>
       {name}
     </StyledButtons>
   );
-};
+}
 
 const StyledButtons = styled.button`
   @media (min-width: 600px) {
