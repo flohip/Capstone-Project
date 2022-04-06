@@ -5,10 +5,8 @@ export default function RequestedWord({ requestedWord, checkedGuessArray }) {
   const [isShown, setIsShown] = useState([]);
   useEffect(() => {
     if (checkedGuessArray.length > 0) {
-      console.log("input kam an");
       setIsShown(checkedGuessArray);
     } else {
-      console.log("es kam noch kein input an");
       setIsShown(
         requestedWord.map(() => {
           return false;
@@ -24,8 +22,6 @@ export default function RequestedWord({ requestedWord, checkedGuessArray }) {
   //   });
   //   setIsShown(changedState);
   // }
-
-  console.log("isShown: ", isShown.length);
 
   return (
     <>

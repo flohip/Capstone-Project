@@ -27,8 +27,8 @@ export default function Home({}) {
     setRequestedWord(word);
   }, [num]);
   //Check the submitted guess
-  console.log("===>", submittedGuess);
-  console.log("===>", submittedGuess.state);
+  // console.log("===>", submittedGuess);
+  // console.log("===>", submittedGuess.state);
 
   useEffect(() => {
     if (submittedGuess.state !== "inactive") {
@@ -41,7 +41,7 @@ export default function Home({}) {
   }, [requestedWord, submittedGuess]);
 
   // console.log(submittedGuess.name, submittedGuess.state);
-  console.log("checkedGuessArray: ", checkedGuessArray);
+  // console.log("checkedGuessArray: ", checkedGuessArray);
 
   return (
     <>
