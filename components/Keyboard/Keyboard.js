@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Key from "./Key";
 import EnterButton from "../Button/EnterButton";
 
-export default function Keyboard({ setSubmittedGuess, onSubmitCheck }) {
+export default function Keyboard({ setSubmittedGuess }) {
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
   return (
     <>
@@ -22,7 +22,6 @@ export default function Keyboard({ setSubmittedGuess, onSubmitCheck }) {
       </StyledKeyboard>
       <EnterButton
         onSubmitGuess={(e) => setSubmittedGuess(getActiveKey(keyboardKeys))}
-        onSubmitCheck={onSubmitCheck}
       />
     </>
   );

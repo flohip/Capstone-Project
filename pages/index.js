@@ -12,8 +12,12 @@ import { checkGuess } from "../utils/checkGuess";
 export default function Home({}) {
   const [num, setNum] = useState(Number);
   const [requestedWord, setRequestedWord] = useState([]);
-  const [submittedGuess, setSubmittedGuess] = useState(null);
-  const [checkedGuessArray, setCheckedGuessArray] = useState();
+  const [submittedGuess, setSubmittedGuess] = useState({
+    name: "name",
+    state: "inactive",
+  });
+  const [checkedGuessArray, setCheckedGuessArray] = useState([]);
+
   useEffect(() => {
     setNum(getRandomInt(data.length));
   }, []);
@@ -22,13 +26,20 @@ export default function Home({}) {
     const word = splitDataName(data, num);
     setRequestedWord(word);
   }, [num]);
-
   //Check the submitted guess
-  function onSubmitCheck() {
-    setCheckedGuessArray(checkGuess(requestedWord, submittedGuess));
-  }
+  useEffect(() => {
+    if (submittedGuess.name !== "name") {
+      setCheckedGuessArray(
+        checkGuess(requestedWord, submittedGuess, checkedGuessArray)
+      );
+    } else {
+      return;
+    }
+  }, [requestedWord, submittedGuess]);
 
+  // console.log(submittedGuess.name, submittedGuess.state);
   console.log("checkedGuessArray: ", checkedGuessArray);
+
   return (
     <>
       <Head>
@@ -51,11 +62,13 @@ export default function Home({}) {
       </Header>
       <StyledMain>
         <WordCategory data={data} num={num} />
-        <RequestedWord data={data} num={num} requestedWord={requestedWord} />
-        <Keyboard
-          setSubmittedGuess={setSubmittedGuess}
-          onSubmitCheck={onSubmitCheck}
+        <RequestedWord
+          data={data}
+          num={num}
+          requestedWord={requestedWord}
+          checkedGuessArray={checkedGuessArray}
         />
+        <Keyboard setSubmittedGuess={setSubmittedGuess} />
       </StyledMain>
     </>
   );

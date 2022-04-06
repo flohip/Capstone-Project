@@ -1,19 +1,37 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function RequestedWord({ requestedWord }) {
-  const [isShown, setIsShown] = useState(true);
+export default function RequestedWord({ requestedWord, checkedGuessArray }) {
+  const [isShown, setIsShown] = useState([]);
+  useEffect(() => {
+    if (checkedGuessArray.length > 0) {
+      console.log("input kam an");
+      setIsShown(checkedGuessArray);
+    } else {
+      console.log("es kam noch kein input an");
+      setIsShown(
+        requestedWord.map(() => {
+          return false;
+        })
+      );
+    }
+  }, [checkedGuessArray, requestedWord]);
 
   //for test purposes
   function toggleClickHandler() {
-    setIsShown(!isShown);
+    const changedState = isShown.map((boolean) => {
+      return !boolean;
+    });
+    setIsShown(changedState);
   }
+
+  console.log("isShown: ", isShown.length);
 
   return (
     <>
       <StyledUl>
         {requestedWord.map((letter, index) => (
-          <StyledLi key={index}>{isShown ? letter : null}</StyledLi>
+          <StyledLi key={index}>{isShown[index] ? letter : null}</StyledLi>
         ))}
       </StyledUl>
       <ToggleButton onClick={toggleClickHandler}>
