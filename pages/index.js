@@ -17,31 +17,37 @@ export default function Home({}) {
     state: "inactive",
   });
   const [checkedGuessArray, setCheckedGuessArray] = useState([]);
+  const [keyState, setKeystate] = useState("");
+  const [keyName, setKeyName] = useState("");
+  console.log(requestedWord);
 
+  //get an random integer, to select a object out of the data
   useEffect(() => {
     setNum(getRandomInt(data.length));
   }, []);
 
+  //split the requested word in an array of strings
+  //e.g. "React" => ["R","E","A","C","T"]
   useEffect(() => {
     const word = splitDataName(data, num);
     setRequestedWord(word);
   }, [num]);
-  //Check the submitted guess
-  // console.log("===>", submittedGuess);
-  // console.log("===>", submittedGuess.state);
 
+  //Check the submitted guess
   useEffect(() => {
     if (submittedGuess.state !== "inactive") {
-      setCheckedGuessArray(
-        checkGuess(requestedWord, submittedGuess, checkedGuessArray)
+      const [returnValue, state, key] = checkGuess(
+        requestedWord,
+        submittedGuess,
+        checkedGuessArray
       );
+      setKeystate(state);
+      setKeyName(key);
+      setCheckedGuessArray(returnValue);
     } else {
       return;
     }
   }, [requestedWord, submittedGuess]);
-
-  // console.log(submittedGuess.name, submittedGuess.state);
-  // console.log("checkedGuessArray: ", checkedGuessArray);
 
   return (
     <>
@@ -61,7 +67,11 @@ export default function Home({}) {
           requestedWord={requestedWord}
           checkedGuessArray={checkedGuessArray}
         />
-        <Keyboard setSubmittedGuess={setSubmittedGuess} />
+        <Keyboard
+          setSubmittedGuess={setSubmittedGuess}
+          keyState={keyState}
+          keyName={keyName}
+        />
       </StyledMain>
     </>
   );

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Key from "./Key";
 import EnterButton from "../Button/EnterButton";
 
-export default function Keyboard({ setSubmittedGuess }) {
+export default function Keyboard({ setSubmittedGuess, keyState, keyName }) {
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
   return (
     <>
@@ -12,7 +12,15 @@ export default function Keyboard({ setSubmittedGuess }) {
           const currentStyle = checkState(state);
           return (
             <Key
-              onClick={() => handleClick(name, keyboardKeys, setkeyboardKeys)}
+              onClick={() =>
+                handleClick(
+                  name,
+                  keyboardKeys,
+                  setkeyboardKeys,
+                  keyState,
+                  keyName
+                )
+              }
               key={name}
               name={name}
               style={currentStyle}
@@ -41,11 +49,17 @@ function getActiveKey(keys) {
     return activeKey;
   }
 }
-function handleClick(name, keyboardKeys, setkeyboardKeys) {
+function handleClick(name, keyboardKeys, setkeyboardKeys, keyState, keyName) {
   setkeyboardKeys(
     keyboardKeys.map((key) => {
       if (key.state === "active") {
         key.state = "inactive";
+      }
+      if (keyState === "correct" && key.name === keyName) {
+        return { ...key, state: "correct" };
+      }
+      if (keyState === "wrong" && key.name === keyName) {
+        return { ...key, state: "wrong" };
       }
       if (key.name === name) {
         return { ...key, state: "active" };
@@ -64,9 +78,11 @@ function checkState(state) {
     returnState = { backgroundColor: "var(--fontColor)" };
   } else if (state === "active") {
     returnState = { backgroundColor: "blue", color: "white" };
-  } else if (state === "correct") {
+  }
+  if (state === "correct") {
     returnState = { backgroundColor: "green", color: "white" };
-  } else if (state === "wrong") {
+  }
+  if (state === "wrong") {
     returnState = { backgroundColor: "grey" };
   }
 

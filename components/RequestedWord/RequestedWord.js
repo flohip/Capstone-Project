@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export default function RequestedWord({ requestedWord, checkedGuessArray }) {
   const [isShown, setIsShown] = useState([]);
   useEffect(() => {
-    if (checkedGuessArray.length > 0) {
+    if (checkedGuessArray.length === requestedWord.length) {
       setIsShown(checkedGuessArray);
     } else {
       setIsShown(
@@ -15,14 +15,6 @@ export default function RequestedWord({ requestedWord, checkedGuessArray }) {
     }
   }, [checkedGuessArray, requestedWord]);
 
-  //for test purposes
-  // function toggleClickHandler() {
-  //   const changedState = isShown.map((boolean) => {
-  //     return !boolean;
-  //   });
-  //   setIsShown(changedState);
-  // }
-
   return (
     <>
       <StyledUl>
@@ -30,9 +22,6 @@ export default function RequestedWord({ requestedWord, checkedGuessArray }) {
           <StyledLi key={index}>{isShown[index] ? letter : null}</StyledLi>
         ))}
       </StyledUl>
-      {/* <ToggleButton onClick={toggleClickHandler}>
-        hide / show requested word
-      </ToggleButton> */}
     </>
   );
 }
