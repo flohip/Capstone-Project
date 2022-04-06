@@ -28,14 +28,18 @@ export default function Keyboard({ setSubmittedGuess }) {
 }
 
 function getActiveKey(keys) {
-  let activeKey;
+  let activeKey = null;
   keys.filter((key) => {
     if (key.state === "active") {
       activeKey = key;
     }
   });
-
-  return activeKey;
+  if (activeKey !== null) {
+    return activeKey;
+  } else {
+    activeKey = { name: "", state: "inactive" };
+    return activeKey;
+  }
 }
 function handleClick(name, keyboardKeys, setkeyboardKeys) {
   setkeyboardKeys(

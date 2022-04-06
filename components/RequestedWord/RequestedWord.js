@@ -18,12 +18,12 @@ export default function RequestedWord({ requestedWord, checkedGuessArray }) {
   }, [checkedGuessArray, requestedWord]);
 
   //for test purposes
-  function toggleClickHandler() {
-    const changedState = isShown.map((boolean) => {
-      return !boolean;
-    });
-    setIsShown(changedState);
-  }
+  // function toggleClickHandler() {
+  //   const changedState = isShown.map((boolean) => {
+  //     return !boolean;
+  //   });
+  //   setIsShown(changedState);
+  // }
 
   console.log("isShown: ", isShown.length);
 
@@ -34,9 +34,9 @@ export default function RequestedWord({ requestedWord, checkedGuessArray }) {
           <StyledLi key={index}>{isShown[index] ? letter : null}</StyledLi>
         ))}
       </StyledUl>
-      <ToggleButton onClick={toggleClickHandler}>
+      {/* <ToggleButton onClick={toggleClickHandler}>
         hide / show requested word
-      </ToggleButton>
+      </ToggleButton> */}
     </>
   );
 }

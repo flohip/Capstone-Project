@@ -5,15 +5,15 @@ import RequestedWord from "../components/RequestedWord/RequestedWord";
 import Keyboard from "../components/Keyboard/Keyboard";
 import data from "../data/cityData.json";
 import getRandomInt from "../utils/getRandomInt";
-import { useEffect, useState } from "react";
 import splitDataName from "../components/RequestedWord/splitDataName";
+import { useEffect, useState } from "react";
 import { checkGuess } from "../utils/checkGuess";
 
 export default function Home({}) {
   const [num, setNum] = useState(Number);
   const [requestedWord, setRequestedWord] = useState([]);
   const [submittedGuess, setSubmittedGuess] = useState({
-    name: "name",
+    name: "",
     state: "inactive",
   });
   const [checkedGuessArray, setCheckedGuessArray] = useState([]);
@@ -27,8 +27,11 @@ export default function Home({}) {
     setRequestedWord(word);
   }, [num]);
   //Check the submitted guess
+  console.log("===>", submittedGuess);
+  console.log("===>", submittedGuess.state);
+
   useEffect(() => {
-    if (submittedGuess.name !== "name") {
+    if (submittedGuess.state !== "inactive") {
       setCheckedGuessArray(
         checkGuess(requestedWord, submittedGuess, checkedGuessArray)
       );
@@ -50,16 +53,6 @@ export default function Home({}) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header>
-        Welcome to my{" "}
-        <a
-          href="https://github.com/flohip/capstone-project"
-          rel="noreferrer"
-          target="_blank"
-        >
-          Capstone-Project!
-        </a>
-      </Header>
       <StyledMain>
         <WordCategory data={data} num={num} />
         <RequestedWord
@@ -90,34 +83,4 @@ const StyledMain = styled.main`
   justify-content: center;
   align-items: center;
   background: inherit;
-`;
-
-const Header = styled.h1`
-  @media (min-width: 1024px) {
-    font-size: 3rem;
-  }
-  @media (max-width: 1024px) {
-    font-size: 2rem;
-  }
-  @media (max-width: 600px) {
-    font-size: 1.5rem;
-  }
-  color: var(--fontColor);
-  margin-bottom: 1rem;
-  font-size: inherit;
-  text-align: center;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  > a {
-    color: #0070f3;
-  }
-
-  > a:hover,
-  > a:focus,
-  > a:active {
-    text-decoration: underline;
-  }
 `;
