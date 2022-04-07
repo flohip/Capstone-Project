@@ -11,9 +11,10 @@ import { checkGuess } from "../utils/checkGuess";
 import StartGame from "../components/Button/StartGame";
 
 export default function Home({}) {
-  const [num, setNum] = useState(Number);
+  const [num, setNum] = useState(getRandomInt(data.length));
   const [gameStarted, setGameStarted] = useState(false);
   const [wonGame, setWonGame] = useState(false);
+  const [checkIfWonArray, setCheckIfWonArray] = useState(null);
 
   const [requestedWord, setRequestedWord] = useState([]);
   const [submittedGuess, setSubmittedGuess] = useState({
@@ -24,6 +25,33 @@ export default function Home({}) {
   const [keyState, setKeystate] = useState("");
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
+  console.log(requestedWord);
+  console.log("checkedGuessArray: ", checkedGuessArray);
+  console.log("checkIfWonArray: ", checkIfWonArray);
+
+  // checking if full word was guessed
+  useEffect(() => {
+    setCheckIfWonArray(
+      checkedGuessArray.filter((bool) => {
+        if (bool === false) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+    );
+  }, [checkedGuessArray]);
+  useEffect(() => {
+    if (checkIfWonArray !== null) {
+      if (checkIfWonArray.length === 0) {
+        console.log("You've won the game");
+        setWonGame(true);
+        setGameStarted(false);
+      } else {
+        return;
+      }
+    }
+  }, [checkIfWonArray]);
 
   //get an random integer, to select a object out of the data
   useEffect(() => {
