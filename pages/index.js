@@ -2,7 +2,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import WordCategory from "../components/WordCategory/WordCategory";
 import RequestedWord from "../components/RequestedWord/RequestedWord";
-import Keyboard from "../components/Keyboard/Keyboard";
+import Keyboard, { initialState } from "../components/Keyboard/Keyboard";
 import data from "../data/cityData.json";
 import getRandomInt from "../utils/getRandomInt";
 import splitDataName from "../components/RequestedWord/splitDataName";
@@ -19,7 +19,7 @@ export default function Home({}) {
   const [checkedGuessArray, setCheckedGuessArray] = useState([]);
   const [keyState, setKeystate] = useState("");
   const [keyName, setKeyName] = useState("");
-  console.log(requestedWord);
+  const [keyboardKeys, setkeyboardKeys] = useState(initialState);
 
   //get an random integer, to select a object out of the data
   useEffect(() => {
@@ -40,6 +40,12 @@ export default function Home({}) {
         requestedWord,
         submittedGuess,
         checkedGuessArray
+      );
+      setkeyboardKeys(
+        keyboardKeys.map((k) => {
+          if (k.name === key) k.state = state;
+          return k;
+        })
       );
       setKeystate(state);
       setKeyName(key);
@@ -68,9 +74,12 @@ export default function Home({}) {
           checkedGuessArray={checkedGuessArray}
         />
         <Keyboard
+          submittedGuess={submittedGuess}
           setSubmittedGuess={setSubmittedGuess}
           keyState={keyState}
           keyName={keyName}
+          keyboardKeys={keyboardKeys}
+          setkeyboardKeys={setkeyboardKeys}
         />
       </StyledMain>
     </>

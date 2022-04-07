@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export default function Key({ onClick, name, style }) {
+export default function Key({ onClick, name, currentStyle, isDisabled }) {
   return (
-    <StyledButtons onClick={onClick} style={style}>
+    <StyledButtons onClick={onClick} style={currentStyle} disabled={isDisabled}>
       {name}
     </StyledButtons>
   );

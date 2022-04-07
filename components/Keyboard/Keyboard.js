@@ -3,27 +3,33 @@ import styled from "styled-components";
 import Key from "./Key";
 import EnterButton from "../Button/EnterButton";
 
-export default function Keyboard({ setSubmittedGuess, keyState, keyName }) {
-  const [keyboardKeys, setkeyboardKeys] = useState(initialState);
+export default function Keyboard({
+  setSubmittedGuess,
+  keyState,
+  keyName,
+  keyboardKeys,
+  setkeyboardKeys,
+}) {
   return (
     <>
       <StyledKeyboard>
         {keyboardKeys.map(({ name, state }) => {
-          const currentStyle = checkState(state);
+          const [currentStyle, isDisabled] = checkState(state);
           return (
             <Key
-              onClick={() =>
+              onClick={() => {
                 handleClick(
                   name,
                   keyboardKeys,
                   setkeyboardKeys,
                   keyState,
                   keyName
-                )
-              }
+                );
+              }}
               key={name}
               name={name}
-              style={currentStyle}
+              currentStyle={currentStyle}
+              isDisabled={isDisabled}
             />
           );
         })}
@@ -73,20 +79,25 @@ function handleClick(name, keyboardKeys, setkeyboardKeys, keyState, keyName) {
 //Each Button has different states
 // "inactive", "active", "correct", "wrong"
 function checkState(state) {
-  let returnState;
+  let currentStyle;
+  let isDisabled;
   if (state === "inactive") {
-    returnState = { backgroundColor: "var(--fontColor)" };
+    currentStyle = { backgroundColor: "var(--fontColor)" };
+    isDisabled = false;
   } else if (state === "active") {
-    returnState = { backgroundColor: "blue", color: "white" };
+    currentStyle = { backgroundColor: "blue", color: "white" };
+    isDisabled = false;
   }
   if (state === "correct") {
-    returnState = { backgroundColor: "green", color: "white" };
+    currentStyle = { backgroundColor: "green", color: "white" };
+    isDisabled = true;
   }
   if (state === "wrong") {
-    returnState = { backgroundColor: "grey" };
+    currentStyle = { backgroundColor: "grey", color: "white" };
+    isDisabled = true;
   }
 
-  return returnState;
+  return [currentStyle, isDisabled];
 }
 
 const StyledKeyboard = styled.div`
@@ -105,7 +116,7 @@ const StyledKeyboard = styled.div`
   }
 `;
 
-const initialState = [
+export const initialState = [
   { name: "Q", state: "inactive" },
   { name: "W", state: "inactive" },
   { name: "E", state: "inactive" },
