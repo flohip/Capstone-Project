@@ -8,9 +8,13 @@ import getRandomInt from "../utils/getRandomInt";
 import splitDataName from "../components/RequestedWord/splitDataName";
 import { useEffect, useState } from "react";
 import { checkGuess } from "../utils/checkGuess";
+import StartGame from "../components/Button/StartGame";
 
 export default function Home({}) {
   const [num, setNum] = useState(Number);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [wonGame, setWonGame] = useState(false);
+
   const [requestedWord, setRequestedWord] = useState([]);
   const [submittedGuess, setSubmittedGuess] = useState({
     name: "",
@@ -65,23 +69,29 @@ export default function Home({}) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <StyledMain>
-        <WordCategory data={data} num={num} />
-        <RequestedWord
-          data={data}
-          num={num}
-          requestedWord={requestedWord}
-          checkedGuessArray={checkedGuessArray}
-        />
-        <Keyboard
-          submittedGuess={submittedGuess}
-          setSubmittedGuess={setSubmittedGuess}
-          keyState={keyState}
-          keyName={keyName}
-          keyboardKeys={keyboardKeys}
-          setkeyboardKeys={setkeyboardKeys}
-        />
-      </StyledMain>
+      {gameStarted ? (
+        <StyledMain>
+          <WordCategory data={data} num={num} />
+          <RequestedWord
+            data={data}
+            num={num}
+            requestedWord={requestedWord}
+            checkedGuessArray={checkedGuessArray}
+          />
+          <Keyboard
+            submittedGuess={submittedGuess}
+            setSubmittedGuess={setSubmittedGuess}
+            keyState={keyState}
+            keyName={keyName}
+            keyboardKeys={keyboardKeys}
+            setkeyboardKeys={setkeyboardKeys}
+          />
+        </StyledMain>
+      ) : (
+        <StyledMain>
+          <StartGame setGameStarted={setGameStarted} />
+        </StyledMain>
+      )}
     </>
   );
 }
