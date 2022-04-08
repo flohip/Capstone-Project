@@ -29,10 +29,6 @@ export default function Home({}) {
   const [keyState, setKeystate] = useState("");
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
-  console.log("dataArray=>", dataArray);
-  console.log("num=>", num);
-  console.log("wonGame=>", wonGame);
-  console.log("requestedWord=>", requestedWord);
   //get an random integer, to select a object out of the dataArray
   useEffect(() => {
     setNum(getRandomInt(dataArray.length));
