@@ -1,34 +1,182 @@
 [
   {
-    "name": "Köln",
-    "category": "Stadt in Deutschland"
-  },
-  {
-    "name": "Stuttgart",
-    "category": "Stadt in Deutschland"
-  },
-  {
-    "name": "Hamburg",
-    "category": "Stadt in Deutschland"
-  },
-  {
+    "id": "1",
     "name": "Berlin",
-    "category": "Stadt in Deutschland"
+    "category": "Stadt in Deutschland",
+    "federalState": "Brandenburg"
   },
   {
-    "name": "Hannover",
-    "category": "Stadt in Deutschland"
+    "id": "2",
+    "name": "Hamburg",
+    "category": "Stadt in Deutschland",
+    "federalState": "Schleswig-Holstein"
   },
   {
-    "name": "Frankfurt",
-    "category": "Stadt in Deutschland"
-  },
-  {
+    "id": "3",
     "name": "München",
-    "category": "Stadt in Deutschland"
+    "category": "Stadt in Deutschland",
+    "federalState": "Bayern"
   },
   {
+    "id": "4",
+    "name": "Köln",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
+  },
+  {
+    "id": "5",
+    "name": "Frankfurt",
+    "category": "Stadt in Deutschland",
+    "federalState": "Hessen"
+  },
+  {
+    "id": "6",
+    "name": "Stuttgart",
+    "category": "Stadt in Deutschland",
+    "federalState": "Baden-Württemberg"
+  },
+  {
+    "id": "7",
+    "name": "Düsseldorf",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
+  },
+  {
+    "id": "8",
+    "name": "Dortmund",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
+  },
+  {
+    "id": "9",
+    "name": "Essen",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
+  },
+  {
+    "id": "10",
+    "name": "Leipzig",
+    "category": "Stadt in Deutschland",
+    "federalState": "Sachsen"
+  },
+  {
+    "id": "11",
+    "name": "Bremen",
+    "category": "Stadt in Deutschland",
+    "federalState": "Niedersachsen"
+  },
+  {
+    "id": "12",
     "name": "Dresden",
-    "category": "Stadt in Deutschland"
+    "category": "Stadt in Deutschland",
+    "federalState": "Sachsen"
+  },
+  {
+    "id": "13",
+    "name": "Hannover",
+    "category": "Stadt in Deutschland",
+    "federalState": "Niedersachsen"
+  },
+  {
+    "id": "14",
+    "name": "Nürnberg",
+    "category": "Stadt in Deutschland",
+    "federalState": "Bayern"
+  },
+  {
+    "id": "15",
+    "name": "Duisburg",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
+  },
+  {
+    "id": "16",
+    "name": "Bochum",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
+  },
+  {
+    "id": "17",
+    "name": "Wuppertal",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
+  },
+  {
+    "id": "18",
+    "name": "Bielefeld",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
+  },
+  {
+    "id": "19",
+    "name": "Bonn",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
+  },
+  {
+    "id": "20",
+    "name": "Münster",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
+  },
+  {
+    "id": "21",
+    "name": "Karlsruhe",
+    "category": "Stadt in Deutschland",
+    "federalState": "Baden-Württemberg"
+  },
+  {
+    "id": "22",
+    "name": "Mannheim",
+    "category": "Stadt in Deutschland",
+    "federalState": "Baden-Württemberg"
+  },
+  {
+    "id": "23",
+    "name": "Augsburg",
+    "category": "Stadt in Deutschland",
+    "federalState": "Bayern"
+  },
+  {
+    "id": "24",
+    "name": "Wiesbaden",
+    "category": "Stadt in Deutschland",
+    "federalState": "Hessen"
+  },
+  {
+    "id": "25",
+    "name": "Gelsenkirchen",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
+  },
+  {
+    "id": "26",
+    "name": "Mönchengladbach",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
+  },
+  {
+    "id": "27",
+    "name": "Braunschweig",
+    "category": "Stadt in Deutschland",
+    "federalState": "Niedersachsen"
+  },
+  {
+    "id": "28",
+    "name": "Chemnitz",
+    "category": "Stadt in Deutschland",
+    "federalState": "Sachsen"
+  },
+  {
+    "id": "29",
+    "name": "Kiel",
+    "category": "Stadt in Deutschland",
+    "federalState": "Schleswig-Holstein"
+  },
+  {
+    "id": "30",
+    "name": "Aachen",
+    "category": "Stadt in Deutschland",
+    "federalState": "Nordrhein-Westfalen"
   }
 ]

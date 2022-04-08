@@ -1,29 +1,40 @@
 import styled from "styled-components";
-import splitDataName from "./splitDataName.js";
 import { useEffect, useState } from "react";
 
-export default function RequestedWord({ data, num }) {
-  const [requestedWord, setRequestedWord] = useState([]);
-  const [isShown, setIsShown] = useState(true);
-
+export default function RequestedWord({ requestedWord, checkedGuessArray }) {
+  const [isShown, setIsShown] = useState([]);
   useEffect(() => {
-    setRequestedWord(splitDataName(data, num));
-  }, [data, num]);
+    if (checkedGuessArray.length === requestedWord.length) {
+      setIsShown(checkedGuessArray);
+    } else {
+      setIsShown(
+        requestedWord.map(() => {
+          return false;
+        })
+      );
+    }
+  }, [checkedGuessArray, requestedWord]);
 
   return (
     <>
       <StyledUl>
         {requestedWord.map((letter, index) => (
-          <StyledLi key={index}>{isShown ? letter : null}</StyledLi>
+          <StyledLi key={index}>{isShown[index] ? letter : null}</StyledLi>
         ))}
       </StyledUl>
     </>
   );
 }
 
+const ToggleButton = styled.button`
+  height: 30px;
+  width: 200px;
+  border-radius: 5px;
+`;
+
 const StyledUl = styled.ul`
   width: fit-content;
-  max-width: 80vw;
+  max-width: 95%;
   padding: 0.3rem;
   display: flex;
   justify-content: center;
@@ -33,16 +44,22 @@ const StyledUl = styled.ul`
 `;
 const StyledLi = styled.li`
   font-size: inherit;
-  width: fit-content;
-  min-height: 60px;
-  min-width: 50px;
-  padding: 1rem;
-  gap: 0.3rem;
+  @media (min-width: 600px) {
+    min-height: 60px;
+    min-width: 45px;
+    border-radius: 6px;
+  }
+  @media (max-width: 600px) {
+    min-height: 32px;
+    min-width: 24px;
+    border-radius: 4px;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--fontColor);
   border: 3px solid var(--backgroundColor);
+
   box-shadow: 2px 2px 2px 0px black;
   list-style-type: none;
 `;
