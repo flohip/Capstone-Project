@@ -102,7 +102,7 @@ function checkState(state) {
 
 const StyledKeyboard = styled.div`
   padding: 1rem;
-  width: 95%;
+  width: 100%;
   display: grid;
   justify-content: center;
 

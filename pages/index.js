@@ -9,12 +9,12 @@ import splitDataName from "../components/RequestedWord/splitDataName";
 import { useEffect, useState } from "react";
 import { checkGuess } from "../utils/checkGuess";
 import StartGame from "../components/Button/StartGame";
+import Score from "../components/Score/Score";
 
 export default function Home({}) {
   const [dataArray, setDataArray] = useState(data);
-  // const [num, setNum] = useState(getRandomInt(dataArray.length));
   const [num, setNum] = useState();
-
+  const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [wonGame, setWonGame] = useState(false);
   const [checkIfWonArray, setCheckIfWonArray] = useState([false]);
@@ -30,16 +30,35 @@ export default function Home({}) {
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
   //get an random integer, to select a object out of the dataArray
+  console.log(requestedWord);
+  console.log(dataArray);
+  console.log("dataArrayLength => ", dataArray.length);
   useEffect(() => {
-    setNum(getRandomInt(dataArray.length));
+    let newNumIsNotInIndexRange = false;
+    let oldNum = null;
+    oldNum = num;
+    let newNum = getRandomInt(dataArray.length);
+    console.log("oldNum=>", oldNum, " and ", "newNum=>", newNum);
+    //rerolls the number, if it's the same as the last number,
+    //because the dataArray-entry gets removed and the current index isn't
+    //available anymore. Prevents an error, when trying to read the index entry
+    while (oldNum === newNum || newNumIsNotInIndexRange) {
+      newNum = getRandomInt(dataArray.length);
+      if (dataArray.length < newNum) {
+        newNumIsNotInIndexRange = true;
+      } else {
+        newNumIsNotInIndexRange = false;
+      }
+    }
+    setNum(newNum);
   }, [dataArray]);
   //split the requested word in an array of strings
+
   //e.g. "React" => ["R","E","A","C","T"]
   useEffect(() => {
     const word = splitDataName(dataArray, num);
     setRequestedWord(word);
   }, [num]);
-
   //Check the submitted guess
   useEffect(() => {
     if (submittedGuess.state !== "inactive") {
@@ -75,11 +94,13 @@ export default function Home({}) {
     );
   }, [checkedGuessArray]);
 
+  //resetting the game
   useEffect(() => {
     if (checkIfWonArray !== null && gameStarted === true) {
       if (checkIfWonArray.length === 0) {
         setGameStarted(false);
         setWonGame(true);
+        setScore(score + 1);
         setCheckIfWonArray([false]);
         setkeyboardKeys(initialState);
         if (submittedGuess.name !== "" && submittedGuess.state !== "inactive") {
@@ -123,6 +144,9 @@ export default function Home({}) {
       </Head>
       {gameStarted ? (
         <StyledMain>
+          <StyledGameInfo>
+            <Score score={score} />
+          </StyledGameInfo>
           <WordCategory dataArray={dataArray} num={num} />
           <RequestedWord
             dataArray={dataArray}
@@ -168,4 +192,12 @@ const StyledMain = styled.main`
   justify-content: center;
   align-items: center;
   background: inherit;
+`;
+
+const StyledGameInfo = styled.div`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 1rem;
+  display: flex;
 `;
