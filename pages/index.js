@@ -11,11 +11,16 @@ import { checkGuess } from "../utils/checkGuess";
 import StartGame from "../components/Button/StartGame";
 
 export default function Home({}) {
-  const [num, setNum] = useState(getRandomInt(data.length));
+  const [dataArray, setDataArray] = useState(data);
+  // const [num, setNum] = useState(getRandomInt(dataArray.length));
+  const [num, setNum] = useState();
+
   const [gameStarted, setGameStarted] = useState(false);
   const [wonGame, setWonGame] = useState(false);
   const [checkIfWonArray, setCheckIfWonArray] = useState([false]);
-  const [requestedWord, setRequestedWord] = useState([]);
+  const [requestedWord, setRequestedWord] = useState(
+    splitDataName(dataArray, num)
+  );
   const [submittedGuess, setSubmittedGuess] = useState({
     name: "",
     state: "inactive",
@@ -24,16 +29,18 @@ export default function Home({}) {
   const [keyState, setKeystate] = useState("");
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
-
-  //get an random integer, to select a object out of the data
+  console.log("dataArray=>", dataArray);
+  console.log("num=>", num);
+  console.log("wonGame=>", wonGame);
+  console.log("requestedWord=>", requestedWord);
+  //get an random integer, to select a object out of the dataArray
   useEffect(() => {
-    setNum(getRandomInt(data.length));
-  }, [gameStarted]);
-
+    setNum(getRandomInt(dataArray.length));
+  }, [dataArray]);
   //split the requested word in an array of strings
   //e.g. "React" => ["R","E","A","C","T"]
   useEffect(() => {
-    const word = splitDataName(data, num);
+    const word = splitDataName(dataArray, num);
     setRequestedWord(word);
   }, [num]);
 
@@ -89,6 +96,19 @@ export default function Home({}) {
         setCheckedGuessArray([false]);
         setKeystate("");
         setKeyName("");
+        setDataArray(
+          dataArray.filter((entry, index) => {
+            if (index !== num) {
+              //"stays in the list of possible words"
+              return true;
+            } else if (index === num) {
+              //"gets sorted out of possible words"
+              return false;
+            } else {
+              return;
+            }
+          })
+        );
       } else {
         return null;
       }
@@ -107,9 +127,9 @@ export default function Home({}) {
       </Head>
       {gameStarted ? (
         <StyledMain>
-          <WordCategory data={data} num={num} />
+          <WordCategory dataArray={dataArray} num={num} />
           <RequestedWord
-            data={data}
+            dataArray={dataArray}
             num={num}
             requestedWord={requestedWord}
             checkedGuessArray={checkedGuessArray}

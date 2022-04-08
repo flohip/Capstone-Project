@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
-export default function WordCategory({ data, num }) {
+export default function WordCategory({ dataArray, num }) {
   const [wordCategory, setWordCategory] = useState("");
   const [wordFederalState, setWordFederalState] = useState("");
 
   useEffect(() => {
-    setWordCategory(data[num].category);
-    setWordFederalState(data[num].federalState);
-  }, [data, num]);
+    setWordCategory(dataArray[num].category);
+    setWordFederalState(dataArray[num].federalState);
+  }, [dataArray, num]);
 
   return (
     <>
