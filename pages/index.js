@@ -14,49 +14,21 @@ export default function Home({}) {
   const [num, setNum] = useState(getRandomInt(data.length));
   const [gameStarted, setGameStarted] = useState(false);
   const [wonGame, setWonGame] = useState(false);
-  const [checkIfWonArray, setCheckIfWonArray] = useState(null);
-
+  const [checkIfWonArray, setCheckIfWonArray] = useState([false]);
   const [requestedWord, setRequestedWord] = useState([]);
   const [submittedGuess, setSubmittedGuess] = useState({
     name: "",
     state: "inactive",
   });
-  const [checkedGuessArray, setCheckedGuessArray] = useState([]);
+  const [checkedGuessArray, setCheckedGuessArray] = useState([false]);
   const [keyState, setKeystate] = useState("");
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
-  console.log(requestedWord);
-  console.log("checkedGuessArray: ", checkedGuessArray);
-  console.log("checkIfWonArray: ", checkIfWonArray);
-
-  // checking if full word was guessed
-  useEffect(() => {
-    setCheckIfWonArray(
-      checkedGuessArray.filter((bool) => {
-        if (bool === false) {
-          return true;
-        } else {
-          return false;
-        }
-      })
-    );
-  }, [checkedGuessArray]);
-  useEffect(() => {
-    if (checkIfWonArray !== null) {
-      if (checkIfWonArray.length === 0) {
-        console.log("You've won the game");
-        setWonGame(true);
-        setGameStarted(false);
-      } else {
-        return;
-      }
-    }
-  }, [checkIfWonArray]);
 
   //get an random integer, to select a object out of the data
   useEffect(() => {
     setNum(getRandomInt(data.length));
-  }, []);
+  }, [gameStarted]);
 
   //split the requested word in an array of strings
   //e.g. "React" => ["R","E","A","C","T"]
@@ -86,6 +58,42 @@ export default function Home({}) {
       return;
     }
   }, [requestedWord, submittedGuess]);
+
+  // checking if full word was guessed
+  useEffect(() => {
+    setCheckIfWonArray(
+      checkedGuessArray.filter((bool) => {
+        if (bool === false) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+    );
+  }, [checkedGuessArray]);
+
+  useEffect(() => {
+    if (checkIfWonArray !== null && gameStarted === true) {
+      if (checkIfWonArray.length === 0) {
+        setGameStarted(false);
+        setWonGame(true);
+        setCheckIfWonArray([false]);
+        setkeyboardKeys(initialState);
+        if (submittedGuess.name !== "" && submittedGuess.state !== "inactive") {
+        }
+        setSubmittedGuess({
+          name: "",
+          state: "inactive",
+        });
+        setRequestedWord([]);
+        setCheckedGuessArray([false]);
+        setKeystate("");
+        setKeyName("");
+      } else {
+        return null;
+      }
+    }
+  }, [checkIfWonArray, gameStarted, submittedGuess, wonGame]);
 
   return (
     <>
@@ -117,7 +125,11 @@ export default function Home({}) {
         </StyledMain>
       ) : (
         <StyledMain>
-          <StartGame setGameStarted={setGameStarted} />
+          <StartGame
+            setGameStarted={setGameStarted}
+            wonGame={wonGame}
+            setWonGame={setWonGame}
+          />
         </StyledMain>
       )}
     </>
