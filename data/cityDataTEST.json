@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "aaa",
+    "category": "AAA",
+    "federalState": "Testing"
+  },
+  {
+    "id": "2",
+    "name": "bbb",
+    "category": "BBB",
+    "federalState": "Testing"
+  },
+  {
+    "id": "3",
+    "name": "ccc",
+    "category": "CCC",
+    "federalState": "Testing"
+  },
+  {
+    "id": "4",
+    "name": "ddd",
+    "category": "DDD",
+    "federalState": "Testing"
+  },
+  {
+    "id": "5",
+    "name": "eee",
+    "category": "EEE",
+    "federalState": "Testing"
+  }
+]

@@ -8,7 +8,7 @@ import getRandomInt from "../utils/getRandomInt";
 import splitDataName from "../components/RequestedWord/splitDataName";
 import { useEffect, useState } from "react";
 import { checkGuess } from "../utils/checkGuess";
-import StartGame from "../components/Button/StartGame";
+import GameMenu from "../components/GameMenu/GameMenu";
 import Score from "../components/Score/Score";
 
 export default function Home({}) {
@@ -17,10 +17,9 @@ export default function Home({}) {
   const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [wonGame, setWonGame] = useState(false);
+  const [guessedAllWords, setGuessedAllWords] = useState(false);
   const [checkIfWonArray, setCheckIfWonArray] = useState([false]);
-  const [requestedWord, setRequestedWord] = useState(
-    splitDataName(dataArray, num)
-  );
+  const [requestedWord, setRequestedWord] = useState();
   const [submittedGuess, setSubmittedGuess] = useState({
     name: "",
     state: "inactive",
@@ -29,36 +28,28 @@ export default function Home({}) {
   const [keyState, setKeystate] = useState("");
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
-  //get an random integer, to select a object out of the dataArray
-  console.log(requestedWord);
-  console.log(dataArray);
+
+  console.log("dataArray:", dataArray);
   console.log("dataArrayLength => ", dataArray.length);
+  console.log("num:", num);
+  console.log("requestedWord:", requestedWord);
+
+  //get an random integer, to select a object out of the dataArray
   useEffect(() => {
     let newNumIsNotInIndexRange = false;
     let oldNum = null;
     oldNum = num;
     let newNum = getRandomInt(dataArray.length);
-    console.log("oldNum=>", oldNum, " and ", "newNum=>", newNum);
-    //rerolls the number, if it's the same as the last number,
-    //because the dataArray-entry gets removed and the current index isn't
-    //available anymore. Prevents an error, when trying to read the index entry
-    while (oldNum === newNum || newNumIsNotInIndexRange) {
-      newNum = getRandomInt(dataArray.length);
-      if (dataArray.length < newNum) {
-        newNumIsNotInIndexRange = true;
-      } else {
-        newNumIsNotInIndexRange = false;
-      }
-    }
     setNum(newNum);
   }, [dataArray]);
-  //split the requested word in an array of strings
 
+  //split the requested word in an array of strings
   //e.g. "React" => ["R","E","A","C","T"]
   useEffect(() => {
     const word = splitDataName(dataArray, num);
     setRequestedWord(word);
-  }, [num]);
+  }, [num, dataArray]);
+
   //Check the submitted guess
   useEffect(() => {
     if (submittedGuess.state !== "inactive") {
@@ -94,7 +85,7 @@ export default function Home({}) {
     );
   }, [checkedGuessArray]);
 
-  //resetting the game
+  //resetting the game and filtering the recent word for the next round
   useEffect(() => {
     if (checkIfWonArray !== null && gameStarted === true) {
       if (checkIfWonArray.length === 0) {
@@ -103,8 +94,8 @@ export default function Home({}) {
         setScore(score + 1);
         setCheckIfWonArray([false]);
         setkeyboardKeys(initialState);
-        if (submittedGuess.name !== "" && submittedGuess.state !== "inactive") {
-        }
+        // if (submittedGuess.name !== "" && submittedGuess.state !== "inactive") {
+        // }
         setSubmittedGuess({
           name: "",
           state: "inactive",
@@ -116,10 +107,10 @@ export default function Home({}) {
         setDataArray(
           dataArray.filter((entry, index) => {
             if (index !== num) {
-              //"stays in the list of possible words"
+              // stays in the list of possible words
               return true;
             } else if (index === num) {
-              //"gets sorted out of possible words"
+              // gets sorted out of possible words
               return false;
             } else {
               return;
@@ -131,6 +122,23 @@ export default function Home({}) {
       }
     }
   }, [checkIfWonArray, gameStarted, submittedGuess, wonGame]);
+
+  //resetting the dataArray when all possible words are guessed correct
+  // to give the option to restart the game
+  useEffect(() => {
+    if (dataArray.length <= 0) {
+      setGuessedAllWords(true);
+      setDataArray(data);
+    }
+  }, [dataArray.length]);
+  function startTheGame(restart) {
+    setGameStarted(true);
+    setWonGame(false);
+    setGuessedAllWords(false);
+    if (restart) {
+      setScore(0);
+    }
+  }
 
   return (
     <>
@@ -165,10 +173,11 @@ export default function Home({}) {
         </StyledMain>
       ) : (
         <StyledMain>
-          <StartGame
-            setGameStarted={setGameStarted}
+          <GameMenu
+            startTheGame={startTheGame}
             wonGame={wonGame}
-            setWonGame={setWonGame}
+            guessedAllWords={guessedAllWords}
+            score={score}
           />
         </StyledMain>
       )}

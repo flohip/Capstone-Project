@@ -28,7 +28,7 @@ function checkColor(setColor, score) {
   } else if (score <= 12) {
     setColor("lightgreen");
   } else if (score <= 15) {
-    setColor("green");
+    setColor("lightblue");
   } else {
     setColor("hotpink");
   }
