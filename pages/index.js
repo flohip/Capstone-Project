@@ -29,11 +29,6 @@ export default function Home({}) {
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
 
-  console.log("dataArray:", dataArray);
-  console.log("dataArrayLength => ", dataArray.length);
-  console.log("num:", num);
-  console.log("requestedWord:", requestedWord);
-
   //get an random integer, to select a object out of the dataArray
   useEffect(() => {
     let newNumIsNotInIndexRange = false;
