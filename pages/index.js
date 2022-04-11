@@ -136,7 +136,7 @@ export default function Home({}) {
   }
 
   return (
-    <>
+    <StyledAppWindow>
       <Head>
         <title>Capstone-Project</title>
         <meta
@@ -146,39 +146,53 @@ export default function Home({}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {gameStarted ? (
-        <StyledMain>
+        <>
           <StyledGameInfo>
             <Score score={score} />
           </StyledGameInfo>
-          <WordCategory dataArray={dataArray} num={num} />
-          <RequestedWord
-            dataArray={dataArray}
-            num={num}
-            requestedWord={requestedWord}
-            checkedGuessArray={checkedGuessArray}
-          />
-          <Keyboard
-            submittedGuess={submittedGuess}
-            setSubmittedGuess={setSubmittedGuess}
-            keyState={keyState}
-            keyName={keyName}
-            keyboardKeys={keyboardKeys}
-            setkeyboardKeys={setkeyboardKeys}
-          />
-        </StyledMain>
+          <StyledMain>
+            <WordCategory dataArray={dataArray} num={num} />
+            <RequestedWord
+              dataArray={dataArray}
+              num={num}
+              requestedWord={requestedWord}
+              checkedGuessArray={checkedGuessArray}
+            />
+            <Keyboard
+              submittedGuess={submittedGuess}
+              setSubmittedGuess={setSubmittedGuess}
+              keyState={keyState}
+              keyName={keyName}
+              keyboardKeys={keyboardKeys}
+              setkeyboardKeys={setkeyboardKeys}
+            />
+          </StyledMain>
+        </>
       ) : (
-        <StyledMain>
-          <GameMenu
-            startTheGame={startTheGame}
-            wonGame={wonGame}
-            guessedAllWords={guessedAllWords}
-            score={score}
-          />
-        </StyledMain>
+        <>
+          <StyledGameInfo>
+            <Score score={score} />
+          </StyledGameInfo>
+          <StyledMain>
+            <GameMenu
+              startTheGame={startTheGame}
+              wonGame={wonGame}
+              guessedAllWords={guessedAllWords}
+              score={score}
+            />
+          </StyledMain>
+        </>
       )}
-    </>
+    </StyledAppWindow>
   );
 }
+
+const StyledAppWindow = styled.div`
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 const StyledMain = styled.main`
   @media (min-width: 600px) {
@@ -187,11 +201,13 @@ const StyledMain = styled.main`
   @media (max-width: 600px) {
     font-size: 1rem;
   }
+  max-width: 1100px;
   min-height: 100vh;
   margin-top: 1rem;
   padding: 4rem 0;
   flex: 1;
   display: flex;
+  align-self: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -199,9 +215,11 @@ const StyledMain = styled.main`
 `;
 
 const StyledGameInfo = styled.div`
+  max-width: 1100px;
   width: 100%;
   position: absolute;
   top: 0;
   padding: 1rem;
+  margin: 1rem;
   display: flex;
 `;

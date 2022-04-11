@@ -1,4 +1,5 @@
 import Image from "next/image";
+import calculateHeight from "../../utils/calculateHeight";
 import gummiBearPicture from "../../images/altair-valasek-6uHnajYSsW0-unsplash.jpg"; // 4000 x 1844 px
 import fireworksPicture from "../../images/ray-hennessy-gdTxVSAE5sk-unsplash.jpg"; // 4091 x 2720 px
 import styled from "styled-components";
@@ -13,26 +14,28 @@ export default function GameMenu({
 
   return guessedAllWords ? (
     <>
-      <StyledHeader>
-        Du hast das Spiel beendet und alle <strong>{score}</strong> Wörter
-        erraten!
-      </StyledHeader>
+      <StyledStartButton onClick={() => startTheGame(true)}>
+        Neues Spiel starten
+      </StyledStartButton>
+      <StyledInfoText>
+        <p>Du hast das Spiel beendet und alle</p>
+        <StyledScore>{score}</StyledScore>
+        <p>Wörter erraten!</p>
+      </StyledInfoText>
+
       <Image
         src={fireworksPicture}
         alt="a picture of fireworksPicture at the sea"
         width={fireworksWidth}
         height={calculateHeight(fireworksWidth, 0.6648)}
       />
-      <StyledStartButton onClick={() => startTheGame(true)}>
-        Neues Spiel starten
-      </StyledStartButton>
     </>
   ) : wonGame ? (
     <>
-      <StyledHeader>
-        Du hast das Wort erraten!!! Hier sind ein paar Gummibärchen als
-        Belohnung...
-      </StyledHeader>
+      <StyledInfoText>
+        <p>Du hast das Wort erraten!!!</p>
+        <p>Hier sind ein paar Gummibärchen als Belohnung...</p>
+      </StyledInfoText>
       <Image
         src={gummiBearPicture}
         alt="a picture of gummi bears"
@@ -45,10 +48,12 @@ export default function GameMenu({
     </>
   ) : (
     <>
-      <StyledHeader>
-        Mal sehen wie dein Wissen über <strong>deutsche Großstädte</strong>{" "}
-        ist...
-      </StyledHeader>
+      <StyledInfoText>
+        <p>Mal sehen wie dein Wissen über</p>
+        <p>
+          <StyledWord>deutsche Großstädte</StyledWord> ist...
+        </p>
+      </StyledInfoText>
 
       <StyledStartButton onClick={() => startTheGame(true)}>
         Spiel starten
@@ -57,29 +62,55 @@ export default function GameMenu({
   );
 }
 
-function calculateHeight(width, ratio) {
-  let height = width * ratio;
-  console.log(height);
-  return height;
-}
 const StyledStartButton = styled.button`
+  @media (min-width: 600px) {
+    width: 300px;
+    height: 60px;
+    border-radius: 12px;
+    margin: 1.5rem;
+    font-size: 1.5rem;
+  }
+  @media (max-width: 600px) {
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+    margin: 1rem;
+    font-size: 1rem;
+  }
   margin: 2rem;
   padding: 0.3rem;
-  width: 50vw;
-  min-height: 10vw;
   height: fit-content;
-  border-radius: 10px;
-  font-size: 2rem;
-  background-color: rgb(0, 170, 0);
+  background-color: var(--fontColor);
 `;
-const StyledHeader = styled.h1`
-  margin: 2rem;
+const StyledInfoText = styled.h1`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 600px) {
+    margin: 2rem;
+    font-size: 2rem;
+  }
+  @media (max-width: 600px) {
+    margin: 1rem;
+    font-size: 1rem;
+    max-width: 300px;
+  }
   border-radius: 10px;
-  font-size: 2rem;
   color: var(--fontColor);
   text-shadow: -1px 0 black;
+  > p {
+    margin: 0.3rem;
+  }
 `;
 
-const StyledImage = styled.img`
-  color: red;
+const StyledWord = styled.span`
+  text-decoration: underline;
+  color: lightgrey;
+`;
+
+const StyledScore = styled.span`
+  color: hotpink;
+  font-size: 3rem;
+  text-shadow: -2px 2px black;
 `;
