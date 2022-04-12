@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Key from "./Key";
-import EnterButton from "../Button/EnterButton";
+import EnterButton from "./EnterButton";
 
 export default function Keyboard({
   setSubmittedGuess,
@@ -102,7 +102,7 @@ function checkState(state) {
 
 const StyledKeyboard = styled.div`
   padding: 1rem;
-  width: 95%;
+  width: 100%;
   display: grid;
   justify-content: center;
 

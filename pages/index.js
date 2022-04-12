@@ -8,19 +8,18 @@ import getRandomInt from "../utils/getRandomInt";
 import splitDataName from "../components/RequestedWord/splitDataName";
 import { useEffect, useState } from "react";
 import { checkGuess } from "../utils/checkGuess";
-import StartGame from "../components/Button/StartGame";
+import GameMenu from "../components/GameMenu/GameMenu";
+import Score from "../components/Score/Score";
 
 export default function Home({}) {
   const [dataArray, setDataArray] = useState(data);
-  // const [num, setNum] = useState(getRandomInt(dataArray.length));
   const [num, setNum] = useState();
-
+  const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [wonGame, setWonGame] = useState(false);
+  const [guessedAllWords, setGuessedAllWords] = useState(false);
   const [checkIfWonArray, setCheckIfWonArray] = useState([false]);
-  const [requestedWord, setRequestedWord] = useState(
-    splitDataName(dataArray, num)
-  );
+  const [requestedWord, setRequestedWord] = useState();
   const [submittedGuess, setSubmittedGuess] = useState({
     name: "",
     state: "inactive",
@@ -29,16 +28,22 @@ export default function Home({}) {
   const [keyState, setKeystate] = useState("");
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
+
   //get an random integer, to select a object out of the dataArray
   useEffect(() => {
-    setNum(getRandomInt(dataArray.length));
+    let newNumIsNotInIndexRange = false;
+    let oldNum = null;
+    oldNum = num;
+    let newNum = getRandomInt(dataArray.length);
+    setNum(newNum);
   }, [dataArray]);
+
   //split the requested word in an array of strings
   //e.g. "React" => ["R","E","A","C","T"]
   useEffect(() => {
     const word = splitDataName(dataArray, num);
     setRequestedWord(word);
-  }, [num]);
+  }, [num, dataArray]);
 
   //Check the submitted guess
   useEffect(() => {
@@ -75,15 +80,17 @@ export default function Home({}) {
     );
   }, [checkedGuessArray]);
 
+  //resetting the game and filtering the recent word for the next round
   useEffect(() => {
     if (checkIfWonArray !== null && gameStarted === true) {
       if (checkIfWonArray.length === 0) {
         setGameStarted(false);
         setWonGame(true);
+        setScore(score + 1);
         setCheckIfWonArray([false]);
         setkeyboardKeys(initialState);
-        if (submittedGuess.name !== "" && submittedGuess.state !== "inactive") {
-        }
+        // if (submittedGuess.name !== "" && submittedGuess.state !== "inactive") {
+        // }
         setSubmittedGuess({
           name: "",
           state: "inactive",
@@ -95,10 +102,10 @@ export default function Home({}) {
         setDataArray(
           dataArray.filter((entry, index) => {
             if (index !== num) {
-              //"stays in the list of possible words"
+              // stays in the list of possible words
               return true;
             } else if (index === num) {
-              //"gets sorted out of possible words"
+              // gets sorted out of possible words
               return false;
             } else {
               return;
@@ -111,8 +118,25 @@ export default function Home({}) {
     }
   }, [checkIfWonArray, gameStarted, submittedGuess, wonGame]);
 
+  //resetting the dataArray when all possible words are guessed correct
+  // to give the option to restart the game
+  useEffect(() => {
+    if (dataArray.length <= 0) {
+      setGuessedAllWords(true);
+      setDataArray(data);
+    }
+  }, [dataArray.length]);
+  function startTheGame(restart) {
+    setGameStarted(true);
+    setWonGame(false);
+    setGuessedAllWords(false);
+    if (restart) {
+      setScore(0);
+    }
+  }
+
   return (
-    <>
+    <StyledAppWindow>
       <Head>
         <title>Capstone-Project</title>
         <meta
@@ -122,35 +146,53 @@ export default function Home({}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {gameStarted ? (
-        <StyledMain>
-          <WordCategory dataArray={dataArray} num={num} />
-          <RequestedWord
-            dataArray={dataArray}
-            num={num}
-            requestedWord={requestedWord}
-            checkedGuessArray={checkedGuessArray}
-          />
-          <Keyboard
-            submittedGuess={submittedGuess}
-            setSubmittedGuess={setSubmittedGuess}
-            keyState={keyState}
-            keyName={keyName}
-            keyboardKeys={keyboardKeys}
-            setkeyboardKeys={setkeyboardKeys}
-          />
-        </StyledMain>
+        <>
+          <StyledGameInfo>
+            <Score score={score} />
+          </StyledGameInfo>
+          <StyledMain>
+            <WordCategory dataArray={dataArray} num={num} />
+            <RequestedWord
+              dataArray={dataArray}
+              num={num}
+              requestedWord={requestedWord}
+              checkedGuessArray={checkedGuessArray}
+            />
+            <Keyboard
+              submittedGuess={submittedGuess}
+              setSubmittedGuess={setSubmittedGuess}
+              keyState={keyState}
+              keyName={keyName}
+              keyboardKeys={keyboardKeys}
+              setkeyboardKeys={setkeyboardKeys}
+            />
+          </StyledMain>
+        </>
       ) : (
-        <StyledMain>
-          <StartGame
-            setGameStarted={setGameStarted}
-            wonGame={wonGame}
-            setWonGame={setWonGame}
-          />
-        </StyledMain>
+        <>
+          <StyledGameInfo>
+            <Score score={score} />
+          </StyledGameInfo>
+          <StyledMain>
+            <GameMenu
+              startTheGame={startTheGame}
+              wonGame={wonGame}
+              guessedAllWords={guessedAllWords}
+              score={score}
+            />
+          </StyledMain>
+        </>
       )}
-    </>
+    </StyledAppWindow>
   );
 }
+
+const StyledAppWindow = styled.div`
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 const StyledMain = styled.main`
   @media (min-width: 600px) {
@@ -159,13 +201,25 @@ const StyledMain = styled.main`
   @media (max-width: 600px) {
     font-size: 1rem;
   }
+  max-width: 1100px;
   min-height: 100vh;
   margin-top: 1rem;
   padding: 4rem 0;
   flex: 1;
   display: flex;
+  align-self: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: inherit;
+`;
+
+const StyledGameInfo = styled.div`
+  max-width: 1100px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
 `;
