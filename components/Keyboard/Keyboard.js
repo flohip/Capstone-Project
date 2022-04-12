@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import Key from "./Key";
 import EnterButton from "./EnterButton";

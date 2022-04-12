@@ -28,10 +28,29 @@ export default function Home({}) {
   const [keyState, setKeystate] = useState("");
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
+  const [currentKey, setCurrentKey] = useState("");
+  const [enterKey, setEnterKey] = useState(false);
+
+  console.log("currentKey => ", currentKey);
+  console.log("enterKey => ", enterKey);
+  // physical keyboard eventlistener
+  useEffect(() => {
+    window.addEventListener("keydown", (e) => {
+      const pressedKey = e.key;
+      //
+      // initialState.find()
+      //
+      console.log("The currently pressed key is: ", pressedKey);
+      if (pressedKey === "Enter") {
+        setEnterKey(true);
+      } else {
+        setCurrentKey(e);
+      }
+    });
+  }, []);
 
   //get an random integer, to select a object out of the dataArray
   useEffect(() => {
-    let newNumIsNotInIndexRange = false;
     let oldNum = null;
     oldNum = num;
     let newNum = getRandomInt(dataArray.length);
