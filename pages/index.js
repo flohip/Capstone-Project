@@ -28,33 +28,43 @@ export default function Home({}) {
   const [keyState, setKeystate] = useState("");
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
+  // currentKey, enterKey and physicalKeyboard - states are for keyboard input
   const [currentKey, setCurrentKey] = useState("");
   const [enterKey, setEnterKey] = useState(false);
-  const [physicalKeyboard, setPhysicalKeyboard] = useState(initialState);
+  const [pressedKey, setPressedKey] = useState("");
 
-  // console.log("submittedGuess => ", submittedGuess);
-  console.log("enterKey => ", enterKey);
-  console.log("currentKey => ", currentKey);
+  console.log("submittedGuess => ", submittedGuess);
+  // console.log("currentKey => ", currentKey);
+  // console.log("enterKey => ", enterKey);
+  // console.log("pressedKey => ", pressedKey);
+
   // console.log("physicalKeyboard => ", physicalKeyboard);
-  console.log("keyboardKeys => ", keyboardKeys);
+  // console.log("keyboardKeys => ", keyboardKeys);
+  // console.log("keyName => ", keyName);
+  // console.log("keyState => ", keyState);
 
   // physical keyboard eventlistener
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
-      const pressedKey = e.key.toUpperCase();
-
-      if (pressedKey === "ENTER") {
-        setEnterKey(true);
-      } else {
-        const foundKey = physicalKeyboard.find(
-          (key) => key.name === pressedKey
-        ); // .name and .state
-        if (foundKey !== undefined) {
-          setCurrentKey(foundKey.name); // only the name is needed
-        }
-      }
+      setPressedKey(e.key.toUpperCase());
     });
-  }, [physicalKeyboard]);
+  }, []);
+  useEffect(() => {
+    if (pressedKey === "ENTER") {
+      setEnterKey(true);
+      setPressedKey("");
+    } else {
+      //check if the key is in available keyboard keys
+      const foundKey = keyboardKeys.find(
+        (key) => key.name === pressedKey && key.state === "inactive"
+      );
+      if (foundKey !== undefined) {
+        setCurrentKey(foundKey.name);
+      } else {
+        return;
+      }
+    }
+  }, [pressedKey]);
 
   //get an random integer, to select a object out of the dataArray
   useEffect(() => {
@@ -79,6 +89,8 @@ export default function Home({}) {
         submittedGuess,
         checkedGuessArray
       );
+
+      // this setter adds "correct" or "wrong" as >state<
       setkeyboardKeys(
         keyboardKeys.map((key) => {
           if (key.name === key) key.state = state;
@@ -193,8 +205,6 @@ export default function Home({}) {
               setCurrentKey={setCurrentKey}
               enterKey={enterKey}
               setEnterKey={setEnterKey}
-              physicalKeyboard={physicalKeyboard}
-              setPhysicalKeyboard={setPhysicalKeyboard}
             />
           </StyledMain>
         </>

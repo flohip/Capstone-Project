@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export default function Key({ onClick, name, currentStyle, isDisabled }) {
+  // const [currentStyle, setCurrentStyle] = useState({
+  //   backgroundColor: "var(--fontColor)",
+  // });
+  // const [isDisabled, setIsDisabled] = useState(true);
   return (
     <StyledButtons onClick={onClick} style={currentStyle} disabled={isDisabled}>
       {name}
