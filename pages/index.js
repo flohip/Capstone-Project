@@ -30,24 +30,31 @@ export default function Home({}) {
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
   const [currentKey, setCurrentKey] = useState("");
   const [enterKey, setEnterKey] = useState(false);
+  const [physicalKeyboard, setPhysicalKeyboard] = useState(initialState);
 
-  console.log("currentKey => ", currentKey);
+  // console.log("submittedGuess => ", submittedGuess);
   console.log("enterKey => ", enterKey);
+  console.log("currentKey => ", currentKey);
+  // console.log("physicalKeyboard => ", physicalKeyboard);
+  console.log("keyboardKeys => ", keyboardKeys);
+
   // physical keyboard eventlistener
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
-      const pressedKey = e.key;
-      //
-      // initialState.find()
-      //
-      console.log("The currently pressed key is: ", pressedKey);
-      if (pressedKey === "Enter") {
+      const pressedKey = e.key.toUpperCase();
+
+      if (pressedKey === "ENTER") {
         setEnterKey(true);
       } else {
-        setCurrentKey(e);
+        const foundKey = physicalKeyboard.find(
+          (key) => key.name === pressedKey
+        ); // .name and .state
+        if (foundKey !== undefined) {
+          setCurrentKey(foundKey.name); // only the name is needed
+        }
       }
     });
-  }, []);
+  }, [physicalKeyboard]);
 
   //get an random integer, to select a object out of the dataArray
   useEffect(() => {
@@ -73,9 +80,9 @@ export default function Home({}) {
         checkedGuessArray
       );
       setkeyboardKeys(
-        keyboardKeys.map((k) => {
-          if (k.name === key) k.state = state;
-          return k;
+        keyboardKeys.map((key) => {
+          if (key.name === key) key.state = state;
+          return key;
         })
       );
       setKeystate(state);
@@ -108,8 +115,6 @@ export default function Home({}) {
         setScore(score + 1);
         setCheckIfWonArray([false]);
         setkeyboardKeys(initialState);
-        // if (submittedGuess.name !== "" && submittedGuess.state !== "inactive") {
-        // }
         setSubmittedGuess({
           name: "",
           state: "inactive",
@@ -184,6 +189,12 @@ export default function Home({}) {
               keyName={keyName}
               keyboardKeys={keyboardKeys}
               setkeyboardKeys={setkeyboardKeys}
+              currentKey={currentKey}
+              setCurrentKey={setCurrentKey}
+              enterKey={enterKey}
+              setEnterKey={setEnterKey}
+              physicalKeyboard={physicalKeyboard}
+              setPhysicalKeyboard={setPhysicalKeyboard}
             />
           </StyledMain>
         </>

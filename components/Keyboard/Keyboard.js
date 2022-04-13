@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Key from "./Key";
 import EnterButton from "./EnterButton";
+import { useEffect } from "react";
 
 export default function Keyboard({
   setSubmittedGuess,
@@ -8,7 +9,35 @@ export default function Keyboard({
   keyName,
   keyboardKeys,
   setkeyboardKeys,
+  currentKey,
+  setCurrentKey,
+  enterKey,
+  setEnterKey,
+  physicalKeyboard,
+  setPhysicalKeyboard,
 }) {
+  // useEffect triggers when valid letter was pressed on the physical keyboard
+  // sets state of the key => inactive, active, correct, wrong
+  useEffect(() => {
+    if (currentKey !== "") {
+      handleClick(currentKey, keyboardKeys, setkeyboardKeys, keyState, keyName);
+    }
+  }, [currentKey]);
+
+  // useEffect triggers when the enter key was pressed on the physical keyboard
+  useEffect(() => {
+    if (enterKey === true) {
+      setSubmittedGuess(getActiveKey(keyboardKeys));
+      const filteredKeys = physicalKeyboard.filter((key) => {
+        return key.name !== currentKey;
+      });
+      setPhysicalKeyboard(filteredKeys);
+    } else {
+      return;
+    }
+    setEnterKey(false);
+  }, [enterKey]);
+
   return (
     <>
       <StyledKeyboard>
