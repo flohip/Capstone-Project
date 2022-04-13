@@ -27,14 +27,17 @@ export default function Keyboard({
   //sets submittedGuess to the "active" key
   useEffect(() => {
     if (enterKey === true) {
-      setSubmittedGuess(getActiveKey(keyboardKeys));
-      setEnterKey(false);
-      setCurrentKey("");
+      submitHandler();
     } else {
       return;
     }
   }, [enterKey]);
-  // console.log(keyboardKeys);
+
+  function submitHandler() {
+    setSubmittedGuess(getActiveKey(keyboardKeys));
+    setEnterKey(false);
+    setCurrentKey("");
+  }
   return (
     <>
       <StyledKeyboard>
@@ -59,11 +62,12 @@ export default function Keyboard({
       </StyledKeyboard>
       <EnterButton
         //sets submittedGuess to the "active" key, when the EnterButton was pressed
-        onSubmitGuess={() => setSubmittedGuess(getActiveKey(keyboardKeys))}
+        onSubmitGuess={submitHandler}
       />
     </>
   );
 }
+
 //checks keyboardkeys for the only "active" one and returns it
 function getActiveKey(keys) {
   let activeKey = null;

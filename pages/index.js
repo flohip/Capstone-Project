@@ -34,14 +34,14 @@ export default function Home({}) {
   const [pressedKey, setPressedKey] = useState("");
 
   // console.log("submittedGuess => ", submittedGuess);
-  // console.log("currentKey => ", currentKey);
+  console.log("currentKey => ", currentKey);
   // console.log("enterKey => ", enterKey);
   // console.log("pressedKey => ", pressedKey);
 
   // console.log("physicalKeyboard => ", physicalKeyboard);
   // console.log("keyboardKeys => ", keyboardKeys);
   // console.log("keyName => ", keyName);
-  // console.log("keyState => ", keyState);
+  console.log("keyState => ", keyState);
 
   // physical keyboard eventlistener
   useEffect(() => {
