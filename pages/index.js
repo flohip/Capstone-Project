@@ -33,7 +33,7 @@ export default function Home({}) {
   const [enterKey, setEnterKey] = useState(false);
   const [pressedKey, setPressedKey] = useState("");
 
-  console.log("submittedGuess => ", submittedGuess);
+  // console.log("submittedGuess => ", submittedGuess);
   // console.log("currentKey => ", currentKey);
   // console.log("enterKey => ", enterKey);
   // console.log("pressedKey => ", pressedKey);

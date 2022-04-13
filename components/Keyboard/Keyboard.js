@@ -15,11 +15,6 @@ export default function Keyboard({
   enterKey,
   setEnterKey,
 }) {
-  const [currentStyle, setCurrentStyle] = useState({
-    backgroundColor: "var(--fontColor)",
-  });
-  const [isDisabled, setIsDisabled] = useState(true);
-
   // useEffect triggers when valid letter was pressed on the physical keyboard
   // sets state of the key => inactive, active, correct, wrong
   useEffect(() => {
@@ -39,16 +34,11 @@ export default function Keyboard({
       return;
     }
   }, [enterKey]);
-  console.log(keyboardKeys);
+  // console.log(keyboardKeys);
   return (
     <>
       <StyledKeyboard>
         {keyboardKeys.map(({ name, state }) => {
-          const [currentStyle, isDisabled] = checkState(state);
-          {
-            console.log(" => ", currentStyle);
-            console.log(" => ", isDisabled);
-          }
           return (
             <Key
               onClick={() => {
@@ -62,8 +52,7 @@ export default function Keyboard({
               }}
               key={name}
               name={name}
-              currentStyle={currentStyle}
-              isDisabled={isDisabled}
+              state={state}
             />
           );
         })}
@@ -110,30 +99,6 @@ function handleClick(name, keyboardKeys, setkeyboardKeys, keyState, keyName) {
       }
     })
   );
-}
-// returns the currentStyle and if the button is disabled
-// Each Button has different states
-// "inactive", "active", "correct", "wrong"
-function checkState(state) {
-  let currentStyle;
-  let isDisabled;
-  if (state === "inactive") {
-    currentStyle = { backgroundColor: "var(--fontColor)" };
-    isDisabled = false;
-  } else if (state === "active") {
-    currentStyle = { backgroundColor: "blue", color: "white" };
-    isDisabled = false;
-  }
-  if (state === "correct") {
-    currentStyle = { backgroundColor: "green", color: "white" };
-    isDisabled = true;
-  }
-  if (state === "wrong") {
-    currentStyle = { backgroundColor: "grey", color: "white" };
-    isDisabled = true;
-  }
-
-  return [currentStyle, isDisabled];
 }
 
 const StyledKeyboard = styled.div`
