@@ -19,7 +19,7 @@ export default function Keyboard({
   // sets state of the key => inactive, active, correct, wrong
   useEffect(() => {
     if (currentKey !== "") {
-      handleClick(currentKey, keyboardKeys, setkeyboardKeys, keyState, keyName);
+      clickHandler(currentKey);
     }
   }, [currentKey]);
 
@@ -33,6 +33,9 @@ export default function Keyboard({
     }
   }, [enterKey]);
 
+  function clickHandler(name) {
+    handleClick(name, keyboardKeys, setkeyboardKeys, keyState, keyName);
+  }
   function submitHandler() {
     setSubmittedGuess(getActiveKey(keyboardKeys));
     setEnterKey(false);
@@ -45,13 +48,7 @@ export default function Keyboard({
           return (
             <Key
               onClick={() => {
-                handleClick(
-                  name,
-                  keyboardKeys,
-                  setkeyboardKeys,
-                  keyState,
-                  keyName
-                );
+                clickHandler(name);
               }}
               key={name}
               name={name}
