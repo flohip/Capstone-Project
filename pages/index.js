@@ -29,9 +29,37 @@ export default function Home({}) {
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
 
+  // currentKey, enterKey and pressedKey - states are for keyboard input
+  const [currentKey, setCurrentKey] = useState("");
+  const [enterKey, setEnterKey] = useState(false);
+  const [pressedKey, setPressedKey] = useState("");
+
+  // physical keyboard eventlistener
+  useEffect(() => {
+    window.addEventListener("keydown", (e) => {
+      setPressedKey(e.key.toUpperCase());
+    });
+  }, []);
+  useEffect(() => {
+    if (pressedKey === "ENTER") {
+      setEnterKey(true);
+      setPressedKey("");
+    } else {
+      //check if the key is in available keyboard keys
+      const foundKey = keyboardKeys.find(
+        (key) => key.name === pressedKey && key.state === "inactive"
+      );
+      if (foundKey !== undefined) {
+        setCurrentKey(foundKey.name);
+        setPressedKey("");
+      } else {
+        return;
+      }
+    }
+  }, [pressedKey]);
+
   //get an random integer, to select a object out of the dataArray
   useEffect(() => {
-    let newNumIsNotInIndexRange = false;
     let oldNum = null;
     oldNum = num;
     let newNum = getRandomInt(dataArray.length);
@@ -53,10 +81,12 @@ export default function Home({}) {
         submittedGuess,
         checkedGuessArray
       );
+
+      // this setter adds "correct" or "wrong" as >state<
       setkeyboardKeys(
-        keyboardKeys.map((k) => {
-          if (k.name === key) k.state = state;
-          return k;
+        keyboardKeys.map((key) => {
+          if (key.name === key) key.state = state;
+          return key;
         })
       );
       setKeystate(state);
@@ -89,8 +119,6 @@ export default function Home({}) {
         setScore(score + 1);
         setCheckIfWonArray([false]);
         setkeyboardKeys(initialState);
-        // if (submittedGuess.name !== "" && submittedGuess.state !== "inactive") {
-        // }
         setSubmittedGuess({
           name: "",
           state: "inactive",
@@ -162,9 +190,15 @@ export default function Home({}) {
               submittedGuess={submittedGuess}
               setSubmittedGuess={setSubmittedGuess}
               keyState={keyState}
+              setKeystate={setKeystate}
               keyName={keyName}
+              setKeyName={setKeyName}
               keyboardKeys={keyboardKeys}
               setkeyboardKeys={setkeyboardKeys}
+              currentKey={currentKey}
+              setCurrentKey={setCurrentKey}
+              enterKey={enterKey}
+              setEnterKey={setEnterKey}
             />
           </StyledMain>
         </>

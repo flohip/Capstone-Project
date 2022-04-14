@@ -1,46 +1,85 @@
-import { useState } from "react";
 import styled from "styled-components";
 import Key from "./Key";
 import EnterButton from "./EnterButton";
+import { useEffect, useState } from "react";
 
 export default function Keyboard({
+  submittedGuess,
   setSubmittedGuess,
   keyState,
+  setKeystate,
   keyName,
+  setKeyName,
   keyboardKeys,
   setkeyboardKeys,
+  currentKey,
+  setCurrentKey,
+  enterKey,
+  setEnterKey,
 }) {
+  // useEffect triggers when valid letter was pressed on the physical keyboard
+  // sets state of the key => inactive, active, correct, wrong
+  useEffect(() => {
+    if (currentKey !== "") {
+      keyboardKeys.map((key) => {
+        if (key.name === currentKey) {
+          clickHandler(currentKey);
+        }
+      });
+    }
+  }, [currentKey]);
+
+  // useEffect triggers when the enter key was pressed on the physical keyboard
+  //sets submittedGuess to the "active" key
+  useEffect(() => {
+    if (enterKey === true) {
+      submitHandler();
+    } else {
+      return;
+    }
+  }, [enterKey]);
+
+  //checks the submitted guess to be "correct" or "wrong"
+  //and colors it, depending on the state
+  useEffect(() => {
+    handleSubmit(keyboardKeys, setkeyboardKeys, keyState, keyName);
+  }, [keyState]);
+
+  function clickHandler(name) {
+    handleClick(name, keyboardKeys, setkeyboardKeys, keyState, keyName);
+  }
+  function submitHandler() {
+    setSubmittedGuess(getActiveKey(keyboardKeys));
+    setEnterKey(false);
+    setCurrentKey("");
+    setKeystate("");
+    setKeyName("");
+  }
   return (
     <>
       <StyledKeyboard>
         {keyboardKeys.map(({ name, state }) => {
-          const [currentStyle, isDisabled] = checkState(state);
           return (
             <Key
               onClick={() => {
-                handleClick(
-                  name,
-                  keyboardKeys,
-                  setkeyboardKeys,
-                  keyState,
-                  keyName
-                );
+                clickHandler(name);
               }}
               key={name}
               name={name}
-              currentStyle={currentStyle}
-              isDisabled={isDisabled}
+              state={state}
             />
           );
         })}
       </StyledKeyboard>
       <EnterButton
-        onSubmitGuess={(e) => setSubmittedGuess(getActiveKey(keyboardKeys))}
+        //sets submittedGuess to the "active" key, when the EnterButton was pressed
+        onSubmitGuess={submitHandler}
       />
     </>
   );
 }
 
+//checks keyboardkeys for the only "active" one and returns it
 function getActiveKey(keys) {
   let activeKey = null;
   keys.filter((key) => {
@@ -55,17 +94,12 @@ function getActiveKey(keys) {
     return activeKey;
   }
 }
+// sets the coloring of the keyboard, when click / input is recognized
 function handleClick(name, keyboardKeys, setkeyboardKeys, keyState, keyName) {
   setkeyboardKeys(
     keyboardKeys.map((key) => {
       if (key.state === "active") {
         key.state = "inactive";
-      }
-      if (keyState === "correct" && key.name === keyName) {
-        return { ...key, state: "correct" };
-      }
-      if (keyState === "wrong" && key.name === keyName) {
-        return { ...key, state: "wrong" };
       }
       if (key.name === name) {
         return { ...key, state: "active" };
@@ -75,29 +109,18 @@ function handleClick(name, keyboardKeys, setkeyboardKeys, keyState, keyName) {
     })
   );
 }
-
-//Each Button has different states
-// "inactive", "active", "correct", "wrong"
-function checkState(state) {
-  let currentStyle;
-  let isDisabled;
-  if (state === "inactive") {
-    currentStyle = { backgroundColor: "var(--fontColor)" };
-    isDisabled = false;
-  } else if (state === "active") {
-    currentStyle = { backgroundColor: "blue", color: "white" };
-    isDisabled = false;
-  }
-  if (state === "correct") {
-    currentStyle = { backgroundColor: "green", color: "white" };
-    isDisabled = true;
-  }
-  if (state === "wrong") {
-    currentStyle = { backgroundColor: "grey", color: "white" };
-    isDisabled = true;
-  }
-
-  return [currentStyle, isDisabled];
+function handleSubmit(keyboardKeys, setkeyboardKeys, keyState, keyName) {
+  setkeyboardKeys(
+    keyboardKeys.map((key) => {
+      if (keyState === "correct" && key.name === keyName) {
+        return { ...key, state: "correct" };
+      } else if (keyState === "wrong" && key.name === keyName) {
+        return { ...key, state: "wrong" };
+      } else {
+        return key;
+      }
+    })
+  );
 }
 
 const StyledKeyboard = styled.div`
