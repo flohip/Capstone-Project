@@ -7,7 +7,9 @@ export default function Keyboard({
   submittedGuess,
   setSubmittedGuess,
   keyState,
+  setKeystate,
   keyName,
+  setKeyName,
   keyboardKeys,
   setkeyboardKeys,
   currentKey,
@@ -19,7 +21,11 @@ export default function Keyboard({
   // sets state of the key => inactive, active, correct, wrong
   useEffect(() => {
     if (currentKey !== "") {
-      clickHandler(currentKey);
+      keyboardKeys.map((key) => {
+        if (key.name === currentKey) {
+          clickHandler(currentKey);
+        }
+      });
     }
   }, [currentKey]);
 
@@ -33,6 +39,12 @@ export default function Keyboard({
     }
   }, [enterKey]);
 
+  //checks the submitted guess to be "correct" or "wrong"
+  //and colors it, depending on the state
+  useEffect(() => {
+    handleSubmit(keyboardKeys, setkeyboardKeys, keyState, keyName);
+  }, [keyState]);
+
   function clickHandler(name) {
     handleClick(name, keyboardKeys, setkeyboardKeys, keyState, keyName);
   }
@@ -40,6 +52,8 @@ export default function Keyboard({
     setSubmittedGuess(getActiveKey(keyboardKeys));
     setEnterKey(false);
     setCurrentKey("");
+    setKeystate("");
+    setKeyName("");
   }
   return (
     <>
@@ -87,14 +101,21 @@ function handleClick(name, keyboardKeys, setkeyboardKeys, keyState, keyName) {
       if (key.state === "active") {
         key.state = "inactive";
       }
-      if (keyState === "correct" && key.name === keyName) {
-        return { ...key, state: "correct" };
-      }
-      if (keyState === "wrong" && key.name === keyName) {
-        return { ...key, state: "wrong" };
-      }
       if (key.name === name) {
         return { ...key, state: "active" };
+      } else {
+        return key;
+      }
+    })
+  );
+}
+function handleSubmit(keyboardKeys, setkeyboardKeys, keyState, keyName) {
+  setkeyboardKeys(
+    keyboardKeys.map((key) => {
+      if (keyState === "correct" && key.name === keyName) {
+        return { ...key, state: "correct" };
+      } else if (keyState === "wrong" && key.name === keyName) {
+        return { ...key, state: "wrong" };
       } else {
         return key;
       }

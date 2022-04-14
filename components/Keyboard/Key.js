@@ -5,7 +5,7 @@ export default function Key({ onClick, name, state }) {
   const [currentStyle, setCurrentStyle] = useState({
     backgroundColor: "var(--fontColor)",
   });
-  const [isDisabled, setIsDisabled] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
     const [style, disabled] = checkState(state);
@@ -29,7 +29,8 @@ function checkState(state) {
   if (state === "inactive") {
     currentStyle = { backgroundColor: "var(--fontColor)" };
     isDisabled = false;
-  } else if (state === "active") {
+  }
+  if (state === "active") {
     currentStyle = { backgroundColor: "blue", color: "white" };
     isDisabled = false;
   }

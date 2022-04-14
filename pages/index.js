@@ -28,20 +28,11 @@ export default function Home({}) {
   const [keyState, setKeystate] = useState("");
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
-  // currentKey, enterKey and physicalKeyboard - states are for keyboard input
+
+  // currentKey, enterKey and pressedKey - states are for keyboard input
   const [currentKey, setCurrentKey] = useState("");
   const [enterKey, setEnterKey] = useState(false);
   const [pressedKey, setPressedKey] = useState("");
-
-  // console.log("submittedGuess => ", submittedGuess);
-  console.log("currentKey => ", currentKey);
-  // console.log("enterKey => ", enterKey);
-  // console.log("pressedKey => ", pressedKey);
-
-  // console.log("physicalKeyboard => ", physicalKeyboard);
-  // console.log("keyboardKeys => ", keyboardKeys);
-  // console.log("keyName => ", keyName);
-  console.log("keyState => ", keyState);
 
   // physical keyboard eventlistener
   useEffect(() => {
@@ -60,6 +51,7 @@ export default function Home({}) {
       );
       if (foundKey !== undefined) {
         setCurrentKey(foundKey.name);
+        setPressedKey("");
       } else {
         return;
       }
@@ -198,7 +190,9 @@ export default function Home({}) {
               submittedGuess={submittedGuess}
               setSubmittedGuess={setSubmittedGuess}
               keyState={keyState}
+              setKeystate={setKeystate}
               keyName={keyName}
+              setKeyName={setKeyName}
               keyboardKeys={keyboardKeys}
               setkeyboardKeys={setkeyboardKeys}
               currentKey={currentKey}
