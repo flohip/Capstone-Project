@@ -14,7 +14,7 @@ export default function Score({ score }) {
 }
 const StyledScore = styled.div`
   font-size: 1.5rem;
-  color: lightgreen;
+  color: var(--fontColor);
   display: flex;
   gap: 1rem;
 `;

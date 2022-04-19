@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import { checkGuess } from "../utils/checkGuess";
 import GameMenu from "../components/GameMenu/GameMenu";
 import Score from "../components/Score/Score";
+import Clock from "../components/Clock/Clock";
+import checkTime from "../utils/checkTime";
 
 export default function Home({}) {
   const [dataArray, setDataArray] = useState(data);
@@ -17,6 +19,9 @@ export default function Home({}) {
   const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [wonGame, setWonGame] = useState(false);
+  const [timeBoni, setTimeBoni] = useState(0);
+  const [timeOver, setTimeOver] = useState(false);
+
   const [guessedAllWords, setGuessedAllWords] = useState(false);
   const [checkIfWonArray, setCheckIfWonArray] = useState([false]);
   const [requestedWord, setRequestedWord] = useState();
@@ -118,6 +123,7 @@ export default function Home({}) {
         setWonGame(true);
         setScore(score + 1);
         setCheckIfWonArray([false]);
+        setTimeBoni(checkTime(keyboardKeys));
         setkeyboardKeys(initialState);
         setSubmittedGuess({
           name: "",
@@ -154,11 +160,13 @@ export default function Home({}) {
       setDataArray(data);
     }
   }, [dataArray.length]);
+
   function startTheGame(restart) {
     setGameStarted(true);
     setWonGame(false);
     setGuessedAllWords(false);
     if (restart) {
+      setTimeOver(false);
       setScore(0);
     }
   }
@@ -177,6 +185,13 @@ export default function Home({}) {
         <>
           <StyledGameInfo>
             <Score score={score} />
+            <Clock
+              gameStarted={gameStarted}
+              setGameStarted={setGameStarted}
+              timeBoni={timeBoni}
+              setTimeBoni={setTimeBoni}
+              setTimeOver={setTimeOver}
+            />
           </StyledGameInfo>
           <StyledMain>
             <WordCategory dataArray={dataArray} num={num} />
@@ -206,6 +221,13 @@ export default function Home({}) {
         <>
           <StyledGameInfo>
             <Score score={score} />
+            <Clock
+              gameStarted={gameStarted}
+              setGameStarted={setGameStarted}
+              timeBoni={timeBoni}
+              setTimeBoni={setTimeBoni}
+              setTimeOver={setTimeOver}
+            />
           </StyledGameInfo>
           <StyledMain>
             <GameMenu
@@ -213,6 +235,7 @@ export default function Home({}) {
               wonGame={wonGame}
               guessedAllWords={guessedAllWords}
               score={score}
+              timeOver={timeOver}
             />
           </StyledMain>
         </>
@@ -256,4 +279,5 @@ const StyledGameInfo = styled.div`
   padding: 1rem;
   margin: 1rem;
   display: flex;
+  justify-content: space-between;
 `;
