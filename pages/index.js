@@ -34,6 +34,9 @@ export default function Home({}) {
   const [keyName, setKeyName] = useState("");
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
 
+  //clock
+  const [duration, setDuration] = useState(120);
+
   // currentKey, enterKey and pressedKey - states are for keyboard input
   const [currentKey, setCurrentKey] = useState("");
   const [enterKey, setEnterKey] = useState(false);
@@ -64,18 +67,24 @@ export default function Home({}) {
   }, [pressedKey]);
 
   //get an random integer, to select a object out of the dataArray
-  useEffect(() => {
+  function getNewNum(dataArray, num) {
     let oldNum = null;
     oldNum = num;
     let newNum = getRandomInt(dataArray.length);
     setNum(newNum);
+  }
+  useEffect(() => {
+    getNewNum(dataArray, num);
   }, [dataArray]);
 
   //split the requested word in an array of strings
   //e.g. "React" => ["R","E","A","C","T"]
-  useEffect(() => {
+  function getNewRequestedWord(dataArray, num) {
     const word = splitDataName(dataArray, num);
     setRequestedWord(word);
+  }
+  useEffect(() => {
+    getNewRequestedWord(dataArray, num);
   }, [num, dataArray]);
 
   //Check the submitted guess
@@ -114,43 +123,49 @@ export default function Home({}) {
       })
     );
   }, [checkedGuessArray]);
-
   //resetting the game and filtering the recent word for the next round
   useEffect(() => {
     if (checkIfWonArray !== null && gameStarted === true) {
-      if (checkIfWonArray.length === 0) {
+      if (checkIfWonArray.length === 0 || timeOver) {
         setGameStarted(false);
-        setWonGame(true);
-        setScore(score + 1);
         setCheckIfWonArray([false]);
-        setTimeBoni(checkTime(keyboardKeys));
         setkeyboardKeys(initialState);
         setSubmittedGuess({
           name: "",
           state: "inactive",
         });
-        setRequestedWord([]);
+        // setRequestedWord([]);
         setCheckedGuessArray([false]);
         setKeystate("");
         setKeyName("");
-        setDataArray(
-          dataArray.filter((entry, index) => {
-            if (index !== num) {
-              // stays in the list of possible words
-              return true;
-            } else if (index === num) {
-              // gets sorted out of possible words
-              return false;
-            } else {
-              return;
-            }
-          })
-        );
+        if (timeOver) {
+          setDataArray(data);
+          getNewNum(dataArray, num);
+          getNewRequestedWord(dataArray, num);
+        }
+        if (checkIfWonArray.length === 0) {
+          setWonGame(true);
+          setScore(score + 1);
+          setTimeBoni(checkTime(keyboardKeys));
+          setDataArray(
+            dataArray.filter((entry, index) => {
+              if (index !== num) {
+                // stays in the list of possible words
+                return true;
+              } else if (index === num) {
+                // gets sorted out of possible words
+                return false;
+              } else {
+                return;
+              }
+            })
+          );
+        }
       } else {
         return null;
       }
     }
-  }, [checkIfWonArray, gameStarted, submittedGuess, wonGame]);
+  }, [checkIfWonArray, gameStarted, submittedGuess, wonGame, timeOver]);
 
   //resetting the dataArray when all possible words are guessed correct
   // to give the option to restart the game
@@ -168,9 +183,9 @@ export default function Home({}) {
     if (restart) {
       setTimeOver(false);
       setScore(0);
+      setDuration(120);
     }
   }
-
   return (
     <StyledAppWindow>
       <Head>
@@ -186,11 +201,13 @@ export default function Home({}) {
           <StyledGameInfo>
             <Score score={score} />
             <Clock
+              duration={duration}
+              setDuration={setDuration}
               gameStarted={gameStarted}
-              setGameStarted={setGameStarted}
               timeBoni={timeBoni}
               setTimeBoni={setTimeBoni}
               setTimeOver={setTimeOver}
+              guessedAllWords={guessedAllWords}
             />
           </StyledGameInfo>
           <StyledMain>
@@ -222,11 +239,13 @@ export default function Home({}) {
           <StyledGameInfo>
             <Score score={score} />
             <Clock
+              duration={duration}
+              setDuration={setDuration}
               gameStarted={gameStarted}
-              setGameStarted={setGameStarted}
               timeBoni={timeBoni}
               setTimeBoni={setTimeBoni}
               setTimeOver={setTimeOver}
+              guessedAllWords={guessedAllWords}
             />
           </StyledGameInfo>
           <StyledMain>

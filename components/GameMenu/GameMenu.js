@@ -35,7 +35,7 @@ export default function GameMenu({
         />
       </>
     );
-  } else if (timeOver && !guessedAllWords) {
+  } else if (timeOver) {
     return (
       <>
         <StyledStartButton onClick={() => startTheGame(true)}>
@@ -81,7 +81,7 @@ export default function GameMenu({
           </p>
         </StyledInfoText>
 
-        <StyledStartButton onClick={() => startTheGame(true)}>
+        <StyledStartButton onClick={() => startTheGame(false)}>
           Spiel starten
         </StyledStartButton>
       </>
