@@ -81,7 +81,7 @@ export default function GameMenu({
           </p>
         </StyledInfoText>
 
-        <StyledStartButton onClick={() => startTheGame(false)}>
+        <StyledStartButton onClick={() => startTheGame(true)}>
           Spiel starten
         </StyledStartButton>
       </>

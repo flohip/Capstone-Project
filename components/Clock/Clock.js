@@ -2,46 +2,41 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export default function Clock({
-  duration,
-  setDuration,
+  gameDuration,
+  setGameDuration,
+  maxGameDuration,
+  display,
+  setDisplay,
   gameStarted,
   timeBoni,
   setTimeBoni,
   setTimeOver,
-  guessedAllWords,
 }) {
-  const gameDuration = duration;
-  const maxGameDuration = gameDuration;
-  const [display, setDisplay] = useState("");
-  useEffect(() => {
-    //resets time when all words are guessed
-    if (guessedAllWords) {
-      handleLogic(gameDuration, maxGameDuration, setDuration);
-    }
-  }, [guessedAllWords]);
-
+  // const [displayColor, setDisplayColor] = useState();
+  const [displayColor, setDisplayColor] = useState();
   useEffect(() => {
     if (!gameStarted) {
       // time gets checked and displayed when a word is guessed
-      let newTime = countdownTimer(duration + timeBoni + 1);
-      handleLogic(newTime, maxGameDuration, setDuration);
+      let newTime = countdownTimer(gameDuration + timeBoni + 1);
+      handleLogic(newTime, maxGameDuration);
       setTimeBoni(0);
     }
     if (gameStarted) {
       // time gets checked and displayed every second
       const interval = setInterval(() => {
-        let newTime = countdownTimer(duration);
-        handleLogic(newTime, maxGameDuration, setDuration);
+        let newTime = countdownTimer(gameDuration);
+        handleLogic(newTime, maxGameDuration);
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [duration, gameStarted]);
+  }, [gameDuration, gameStarted]);
 
-  function handleLogic(newTime, maxGameDuration, setDuration) {
+  function handleLogic(newTime, maxGameDuration) {
     const checkedDuration = checkMaxDuration(newTime, maxGameDuration);
-    setDuration(checkedDuration);
-    let newDisplayTime = getDisplayTime(checkedDuration);
+    let newDisplayTime = formatDisplayTime(checkedDuration);
+    setGameDuration(checkedDuration);
     setDisplay(newDisplayTime);
+    return checkedDuration;
   }
 
   function checkMaxDuration(newTime, maxGameDuration) {
@@ -51,9 +46,9 @@ export default function Clock({
       return newTime;
     }
   }
-  function countdownTimer(duration) {
-    let minutes = formatMinutes(duration);
-    let seconds = formatSeconds(duration);
+  function countdownTimer(gameDuration) {
+    let minutes = formatMinutes(gameDuration);
+    let seconds = formatSeconds(gameDuration);
     let timer = minutes * 60 + seconds;
 
     if (timer > 0) {
@@ -61,23 +56,8 @@ export default function Clock({
     } else {
       // GAME OVER
       setTimeOver(true);
-      return gameDuration;
+      return maxGameDuration;
     }
-  }
-  function getDisplayTime(duration) {
-    let minutes = formatMinutes(duration);
-    let seconds = formatSeconds(duration);
-    return minutes + ":" + seconds;
-  }
-  function formatMinutes(duration) {
-    let minutes = Math.floor(duration / 60);
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    return minutes;
-  }
-  function formatSeconds(duration) {
-    let seconds = duration % 60;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-    return seconds;
   }
 
   return <StyledClock>{display}</StyledClock>;
@@ -87,3 +67,20 @@ const StyledClock = styled.div`
   color: var(--fontColor);
   font-size: 1.5rem;
 `;
+
+export function formatDisplayTime(gameDuration) {
+  let minutes = formatMinutes(gameDuration);
+  let seconds = formatSeconds(gameDuration);
+  return minutes + ":" + seconds;
+}
+
+function formatMinutes(gameDuration) {
+  let minutes = Math.floor(gameDuration / 60);
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  return minutes;
+}
+function formatSeconds(gameDuration) {
+  let seconds = gameDuration % 60;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  return seconds;
+}

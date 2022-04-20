@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { checkGuess } from "../utils/checkGuess";
 import GameMenu from "../components/GameMenu/GameMenu";
 import Score from "../components/Score/Score";
-import Clock from "../components/Clock/Clock";
+import Clock, { formatDisplayTime } from "../components/Clock/Clock";
 import checkTime from "../utils/checkTime";
 
 export default function Home({}) {
@@ -35,7 +35,10 @@ export default function Home({}) {
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
 
   //clock
-  const [duration, setDuration] = useState(120);
+  const DEFAULT_GAME_TIME = 120;
+  const [gameDuration, setGameDuration] = useState(DEFAULT_GAME_TIME);
+  const [maxGameDuration, setMaxGameDuration] = useState(DEFAULT_GAME_TIME);
+  const [display, setDisplay] = useState("");
 
   // currentKey, enterKey and pressedKey - states are for keyboard input
   const [currentKey, setCurrentKey] = useState("");
@@ -49,7 +52,7 @@ export default function Home({}) {
     });
   }, []);
   useEffect(() => {
-    if (pressedKey === "ENTER") {
+    if (pressedKey === "ENTER" || pressedKey === " ") {
       setEnterKey(true);
       setPressedKey("");
     } else {
@@ -183,7 +186,9 @@ export default function Home({}) {
     if (restart) {
       setTimeOver(false);
       setScore(0);
-      setDuration(120);
+      setGameDuration(DEFAULT_GAME_TIME);
+      setDisplay(formatDisplayTime(DEFAULT_GAME_TIME));
+      setDataArray(data);
     }
   }
   return (
@@ -201,8 +206,11 @@ export default function Home({}) {
           <StyledGameInfo>
             <Score score={score} />
             <Clock
-              duration={duration}
-              setDuration={setDuration}
+              gameDuration={gameDuration}
+              setGameDuration={setGameDuration}
+              maxGameDuration={maxGameDuration}
+              display={display}
+              setDisplay={setDisplay}
               gameStarted={gameStarted}
               timeBoni={timeBoni}
               setTimeBoni={setTimeBoni}
@@ -239,8 +247,11 @@ export default function Home({}) {
           <StyledGameInfo>
             <Score score={score} />
             <Clock
-              duration={duration}
-              setDuration={setDuration}
+              gameDuration={gameDuration}
+              setGameDuration={setGameDuration}
+              maxGameDuration={maxGameDuration}
+              display={display}
+              setDisplay={setDisplay}
               gameStarted={gameStarted}
               timeBoni={timeBoni}
               setTimeBoni={setTimeBoni}

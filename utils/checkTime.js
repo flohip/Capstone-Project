@@ -1,6 +1,6 @@
 export default function checkTime(keyboardKeys) {
   // multiplier e.g. "2" gives twice as much seconds per "correct" word
-  let multiplier = 1;
+  let multiplier = 2;
 
   const correct = keyboardKeys.filter((key) => {
     return key.state === "correct";
