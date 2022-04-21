@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Key from "./Key";
 import EnterButton from "./EnterButton";
 import { useEffect, useState } from "react";
+import Button from "../Button/Button";
 
 export default function Keyboard({
   submittedGuess,
@@ -71,9 +72,10 @@ export default function Keyboard({
           );
         })}
       </StyledKeyboard>
-      <EnterButton
+      <Button
         //sets submittedGuess to the "active" key, when the EnterButton was pressed
-        onSubmitGuess={submitHandler}
+        onClick={submitHandler}
+        content={"Eingabe"}
       />
     </>
   );

@@ -25,6 +25,9 @@ const StyledHeader = styled.h1`
   @media (max-width: 600px) {
     font-size: 1.5rem;
   }
+  @media (max-width: 400px) {
+    font-size: 1.2rem;
+  }
   color: var(--fontColor);
   margin-bottom: 1rem;
   font-size: inherit;

@@ -108,6 +108,7 @@ const StyledStartButton = styled.button`
   padding: 0.3rem;
   height: fit-content;
   background-color: var(--fontColor);
+  border-color: var(--buttonBorderColor);
 `;
 const StyledInfoText = styled.h1`
   display: flex;
