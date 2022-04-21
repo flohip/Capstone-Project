@@ -22,8 +22,8 @@ const StyledButton = styled.button`
   margin: 2rem;
   padding: 0.3rem;
   height: fit-content;
-  /* color: var(--backgroundColor); */
   color: black;
+  cursor: pointer;
   background-color: var(--fontColor);
   border-color: var(--buttonBorderColor);
 `;

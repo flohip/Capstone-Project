@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import Key from "./Key";
-import EnterButton from "./EnterButton";
-import { useEffect, useState } from "react";
 import Button from "../Button/Button";
+import { useEffect } from "react";
 
 export default function Keyboard({
-  submittedGuess,
   setSubmittedGuess,
   keyState,
   setKeystate,

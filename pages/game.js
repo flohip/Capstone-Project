@@ -290,7 +290,7 @@ const StyledAppWindow = styled.div`
   justify-content: center;
 `;
 
-const StyledMain = styled.main`
+const StyledMain = styled.div`
   @media (min-width: 600px) {
     font-size: 2rem;
   }
@@ -308,9 +308,6 @@ const StyledMain = styled.main`
   justify-content: center;
   align-items: center;
   background: inherit;
-
-  > Button {
-  }
 `;
 
 const StyledGameInfo = styled.div`
