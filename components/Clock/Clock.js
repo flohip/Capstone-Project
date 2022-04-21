@@ -12,7 +12,6 @@ export default function Clock({
   setTimeBoni,
   setTimeOver,
 }) {
-  // const [displayColor, setDisplayColor] = useState();
   const [displayColor, setDisplayColor] = useState();
   useEffect(() => {
     if (!gameStarted) {
