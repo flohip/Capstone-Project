@@ -22,11 +22,5 @@
     "name": "ddd",
     "category": "DDD",
     "federalState": "Testing"
-  },
-  {
-    "id": "5",
-    "name": "eee",
-    "category": "EEE",
-    "federalState": "Testing"
   }
 ]
