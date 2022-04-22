@@ -53,7 +53,6 @@ export default function Home() {
   } else if (categoryState) {
     return (
       <StyledAppWindow>
-        <Header />
         <ContentWrapper>
           <StyledInfo>
             <DataCategory
@@ -67,6 +66,7 @@ export default function Home() {
   } else if (introductionState) {
     return (
       <StyledAppWindow>
+        <Header content={"capstone"} />
         <ContentWrapper>
           <Introduction setIntroductionState={setIntroductionState} />
         </ContentWrapper>
@@ -75,8 +75,8 @@ export default function Home() {
   } else {
     return (
       <StyledAppWindow>
-        <Header />
         <ContentWrapper>
+          <Header content={"title"} />
           <StyledInfo>
             <Button
               onClick={() => clickHandler("startGame")}
@@ -98,8 +98,8 @@ export default function Home() {
 }
 
 const StyledAppWindow = styled.div`
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
 `;

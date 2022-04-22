@@ -14,6 +14,7 @@ import checkTime from "../../utils/checkTime";
 import Button from "../Button/Button";
 
 export default function Game({ setGameState }) {
+  const scoreData = data.length;
   const [dataArray, setDataArray] = useState(data);
   const [num, setNum] = useState();
   const [score, setScore] = useState(0);
@@ -44,7 +45,6 @@ export default function Game({ setGameState }) {
   const [currentKey, setCurrentKey] = useState("");
   const [enterKey, setEnterKey] = useState(false);
   const [pressedKey, setPressedKey] = useState("");
-
   // physical keyboard eventlistener
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
@@ -196,7 +196,7 @@ export default function Game({ setGameState }) {
       {gameStarted ? (
         <>
           <StyledGameInfo>
-            <Score score={score} />
+            <Score score={score} scoreData={scoreData} />
             <Clock
               gameDuration={gameDuration}
               setGameDuration={setGameDuration}
@@ -243,7 +243,7 @@ export default function Game({ setGameState }) {
       ) : (
         <>
           <StyledGameInfo>
-            <Score score={score} />
+            <Score score={score} scoreData={scoreData} />
             <Clock
               gameDuration={gameDuration}
               setGameDuration={setGameDuration}
@@ -279,8 +279,8 @@ export default function Game({ setGameState }) {
 }
 
 const StyledAppWindow = styled.div`
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
 `;
@@ -321,4 +321,5 @@ const StyledButtonContainer = styled.div`
   position: absolute;
   bottom: 1rem;
   margin-top: 2rem;
+  padding: 1rem;
 `;
