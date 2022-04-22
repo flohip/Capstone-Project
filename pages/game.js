@@ -1,4 +1,3 @@
-import Head from "next/head";
 import styled from "styled-components";
 import WordCategory from "../src/components/WordCategory/WordCategory";
 import RequestedWord from "../src/components/RequestedWord/RequestedWord";
@@ -194,14 +193,6 @@ export default function Game({ setGameState }) {
   }
   return (
     <StyledAppWindow>
-      <Head>
-        <title>Capstone-Project</title>
-        <meta
-          name="Capstone-Project by flohip"
-          content="Learning Quiz with next.js"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       {gameStarted ? (
         <>
           <StyledGameInfo>
@@ -241,10 +232,12 @@ export default function Game({ setGameState }) {
               enterKey={enterKey}
               setEnterKey={setEnterKey}
             />
-            <Button
-              onClick={() => setGameState(false)}
-              content={"Spiel beenden"}
-            />
+            <StyledButtonContainer>
+              <Button
+                onClick={() => setGameState(false)}
+                content={"Spiel beenden"}
+              />
+            </StyledButtonContainer>
           </StyledMain>
         </>
       ) : (
@@ -272,10 +265,12 @@ export default function Game({ setGameState }) {
               score={score}
               timeOver={timeOver}
             />
-            <Button
-              onClick={() => setGameState(false)}
-              content={"Zum Hauptmenü"}
-            />
+            <StyledButtonContainer>
+              <Button
+                onClick={() => setGameState(false)}
+                content={"Zum Hauptmenü"}
+              />
+            </StyledButtonContainer>
           </StyledMain>
         </>
       )}
@@ -319,4 +314,9 @@ const StyledGameInfo = styled.div`
   margin: 1rem;
   display: flex;
   justify-content: space-between;
+`;
+
+const StyledButtonContainer = styled.div`
+  position: absolute;
+  bottom: 1rem;
 `;

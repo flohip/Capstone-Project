@@ -4,6 +4,7 @@ import gummiBearPicture from "../../images/altair-valasek-6uHnajYSsW0-unsplash.j
 import fireworksPicture from "../../images/ray-hennessy-gdTxVSAE5sk-unsplash.jpg"; // 4091 x 2720 px
 import sandglassPicture from "../../images/aron-visuals-BXOXnQ26B7o-unsplash.jpg"; // 6000 x 4000 px
 import styled from "styled-components";
+import Button from "../Button/Button";
 export default function GameMenu({
   startTheGame,
   wonGame,
@@ -18,9 +19,10 @@ export default function GameMenu({
   if (guessedAllWords) {
     return (
       <>
-        <StyledStartButton onClick={() => startTheGame(true)}>
-          Neues Spiel starten
-        </StyledStartButton>
+        <Button
+          onClick={() => startTheGame(true)}
+          content={"Neues Spiel starten"}
+        />
         <StyledInfoText>
           <p>Du hast das Spiel beendet und alle</p>
           <StyledScore>{score}</StyledScore>
@@ -38,9 +40,10 @@ export default function GameMenu({
   } else if (timeOver) {
     return (
       <>
-        <StyledStartButton onClick={() => startTheGame(true)}>
-          Neues Spiel starten
-        </StyledStartButton>
+        <Button
+          onClick={() => startTheGame(true)}
+          content={"Neues Spiel starten"}
+        />
         <StyledInfoText>
           <p>Dir ist leider die Zeit ausgegangen!!!</p>
           <Image
@@ -66,9 +69,10 @@ export default function GameMenu({
           />
           <p>Hier sind ein paar Gummibärchen als Belohnung...</p>
         </StyledInfoText>
-        <StyledStartButton onClick={() => startTheGame(false)}>
-          Nächstes Spiel
-        </StyledStartButton>
+        <Button
+          onClick={() => startTheGame(false)}
+          content={"Nächstes Spiel"}
+        />
       </>
     );
   } else {
@@ -80,36 +84,12 @@ export default function GameMenu({
             <StyledWord>deutsche Großstädte</StyledWord> ist...
           </p>
         </StyledInfoText>
-
-        <StyledStartButton onClick={() => startTheGame(true)}>
-          Spiel starten
-        </StyledStartButton>
+        <Button onClick={() => startTheGame(true)} content={"Spiel starten"} />
       </>
     );
   }
 }
 
-const StyledStartButton = styled.button`
-  @media (min-width: 600px) {
-    width: 300px;
-    height: 60px;
-    border-radius: 12px;
-    margin: 1.5rem;
-    font-size: 1.5rem;
-  }
-  @media (max-width: 600px) {
-    width: 200px;
-    height: 40px;
-    border-radius: 8px;
-    margin: 1rem;
-    font-size: 1rem;
-  }
-  margin: 2rem;
-  padding: 0.3rem;
-  height: fit-content;
-  background-color: var(--fontColor);
-  border-color: var(--buttonBorderColor);
-`;
 const StyledInfoText = styled.h1`
   display: flex;
   flex-direction: column;

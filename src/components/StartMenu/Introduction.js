@@ -12,7 +12,7 @@ export default function Introduction({ setIntroductionState }) {
               style={{
                 color: "hotpink",
                 textDecoration: "underline",
-                fontFamily: "impact",
+                textUnderlineOffset: "1px",
                 letterSpacing: "1px",
               }}
             >
@@ -26,9 +26,9 @@ export default function Introduction({ setIntroductionState }) {
             <br />
             <span
               style={{
-                color: "rgb(0,255,0)",
+                color: "rgb(0,222,0)",
                 textDecoration: "underline",
-                fontFamily: "impact",
+                textUnderlineOffset: "1px",
                 letterSpacing: "1px",
               }}
             >
@@ -45,7 +45,7 @@ export default function Introduction({ setIntroductionState }) {
               style={{
                 color: "rgb(222,222,222)",
                 textDecoration: "underline",
-                fontFamily: "impact",
+                textUnderlineOffset: "1px",
                 letterSpacing: "1px",
               }}
             >
@@ -95,7 +95,6 @@ const StyledContainer = styled.div`
   color: var(--fontColor);
 
   font-weight: 400;
-  /* letter-spacing: 1px; */
   word-spacing: 1px;
   > p {
     /* margin: 1rem 0 1rem 0; */

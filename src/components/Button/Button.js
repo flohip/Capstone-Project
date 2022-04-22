@@ -26,4 +26,14 @@ const StyledButton = styled.button`
   cursor: pointer;
   background-color: var(--fontColor);
   border-color: var(--buttonBorderColor);
+
+  :hover,
+  :active,
+  :focus {
+    color: var(--fontColor);
+    background-color: var(--backgroundColor);
+    border-color: var(--buttonBorderColor);
+    transition-duration: 300ms;
+    transform: scale(1.05);
+  }
 `;

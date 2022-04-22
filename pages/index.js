@@ -43,17 +43,16 @@ export default function Home() {
       default:
         break;
     }
-    return;
   }
   if (gameState) {
     return (
-      <>
+      <StyledAppWindow>
         <Game setGameState={setGameState} />;
-      </>
+      </StyledAppWindow>
     );
   } else if (categoryState) {
     return (
-      <>
+      <StyledAppWindow>
         <Header />
         <ContentWrapper>
           <StyledInfo>
@@ -63,19 +62,19 @@ export default function Home() {
             />
           </StyledInfo>
         </ContentWrapper>
-      </>
+      </StyledAppWindow>
     );
   } else if (introductionState) {
     return (
-      <>
+      <StyledAppWindow>
         <ContentWrapper>
           <Introduction setIntroductionState={setIntroductionState} />
         </ContentWrapper>
-      </>
+      </StyledAppWindow>
     );
   } else {
     return (
-      <>
+      <StyledAppWindow>
         <Header />
         <ContentWrapper>
           <StyledInfo>
@@ -93,10 +92,17 @@ export default function Home() {
             />
           </StyledInfo>
         </ContentWrapper>
-      </>
+      </StyledAppWindow>
     );
   }
 }
+
+const StyledAppWindow = styled.div`
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 const StyledInfo = styled.div`
   color: var(--fontColor);
