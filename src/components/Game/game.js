@@ -1,17 +1,17 @@
 import styled from "styled-components";
-import WordCategory from "../src/components/WordCategory/WordCategory";
-import RequestedWord from "../src/components/RequestedWord/RequestedWord";
-import Keyboard, { initialState } from "../src/components/Keyboard/Keyboard";
-import data from "../src/data/cityData.json";
-import getRandomInt from "../src/utils/getRandomInt";
-import splitDataName from "../src/components/RequestedWord/splitDataName";
+import WordCategory from "../WordCategory/WordCategory";
+import RequestedWord from "../RequestedWord/RequestedWord";
+import Keyboard, { initialState } from "../Keyboard/Keyboard";
+import data from "../../data/cityData.json";
+import getRandomInt from "../../utils/getRandomInt";
+import splitDataName from "../RequestedWord/splitDataName";
 import { useEffect, useState } from "react";
-import { checkGuess } from "../src/utils/checkGuess";
-import GameMenu from "../src/components/GameMenu/GameMenu";
-import Score from "../src/components/Score/Score";
-import Clock, { formatDisplayTime } from "../src/components/Clock/Clock";
-import checkTime from "../src/utils/checkTime";
-import Button from "../src/components/Button/Button";
+import { checkGuess } from "../../utils/checkGuess";
+import GameMenu from "../GameMenu/GameMenu";
+import Score from "../Score/Score";
+import Clock, { formatDisplayTime } from "../Clock/Clock";
+import checkTime from "../../utils/checkTime";
+import Button from "../Button/Button";
 
 export default function Game({ setGameState }) {
   const [dataArray, setDataArray] = useState(data);
@@ -232,13 +232,13 @@ export default function Game({ setGameState }) {
               enterKey={enterKey}
               setEnterKey={setEnterKey}
             />
-            <StyledButtonContainer>
-              <Button
-                onClick={() => setGameState(false)}
-                content={"Spiel beenden"}
-              />
-            </StyledButtonContainer>
           </StyledMain>
+          <StyledButtonContainer>
+            <Button
+              onClick={() => setGameState(false)}
+              content={"Spiel beenden"}
+            />
+          </StyledButtonContainer>
         </>
       ) : (
         <>
@@ -265,13 +265,13 @@ export default function Game({ setGameState }) {
               score={score}
               timeOver={timeOver}
             />
-            <StyledButtonContainer>
-              <Button
-                onClick={() => setGameState(false)}
-                content={"Zum Hauptmenü"}
-              />
-            </StyledButtonContainer>
           </StyledMain>
+          <StyledButtonContainer>
+            <Button
+              onClick={() => setGameState(false)}
+              content={"Zum Hauptmenü"}
+            />
+          </StyledButtonContainer>
         </>
       )}
     </StyledAppWindow>
@@ -288,13 +288,14 @@ const StyledAppWindow = styled.div`
 const StyledMain = styled.div`
   @media (min-width: 600px) {
     font-size: 2rem;
+    margin-top: 2rem;
   }
   @media (max-width: 600px) {
     font-size: 1rem;
+    margin-top: 3rem;
   }
   max-width: 1100px;
-  min-height: 100vh;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   padding: 4rem 0;
   flex: 1;
   display: flex;
@@ -319,4 +320,5 @@ const StyledGameInfo = styled.div`
 const StyledButtonContainer = styled.div`
   position: absolute;
   bottom: 1rem;
+  margin-top: 2rem;
 `;

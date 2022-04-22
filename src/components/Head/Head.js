@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-export default function IndexPage() {
+export default function HeadData() {
   return (
     <Head>
       <title>Worducation</title>

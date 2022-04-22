@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "../src/components/Button/Button";
 import DataCategory from "../src/components/StartMenu/DataCategory";
 import Header from "../src/components/Header/Header";
-import Game from "./game";
+import Game from "../src/components/Game/game";
 import Introduction from "../src/components/StartMenu/Introduction";
 
 export default function Home() {
@@ -47,7 +47,7 @@ export default function Home() {
   if (gameState) {
     return (
       <StyledAppWindow>
-        <Game setGameState={setGameState} />;
+        <Game setGameState={setGameState} />
       </StyledAppWindow>
     );
   } else if (categoryState) {

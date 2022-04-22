@@ -1,9 +1,15 @@
-import IndexPage from "../src/components/Head/Head";
-import "../styles/globals.css";
+import GlobalStyle from "../src/components/GlobalStyle/GlobalStyle";
+import HeadData from "../src/components/Head/Head";
+// import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  <IndexPage />;
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <HeadData />
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp;
