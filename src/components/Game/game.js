@@ -2,7 +2,9 @@ import styled from "styled-components";
 import WordCategory from "../WordCategory/WordCategory";
 import RequestedWord from "../RequestedWord/RequestedWord";
 import Keyboard, { initialState } from "../Keyboard/Keyboard";
-import data from "../../data/cityData.json";
+import data from "../../data/cityDataGermany.json";
+import dataList from "../../data/dataImport";
+console.log(dataList);
 import getRandomInt from "../../utils/getRandomInt";
 import splitDataName from "../RequestedWord/splitDataName";
 import { useEffect, useState } from "react";
@@ -13,7 +15,7 @@ import Clock, { formatDisplayTime } from "../Clock/Clock";
 import checkTime from "../../utils/checkTime";
 import Button from "../Button/Button";
 
-export default function Game({ setGameState }) {
+export default function Game({ setGameState, category }) {
   const scoreData = data.length;
   const [dataArray, setDataArray] = useState(data);
   const [num, setNum] = useState();

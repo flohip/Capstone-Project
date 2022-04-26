@@ -1,9 +1,14 @@
 import styled from "styled-components";
 import Button from "../Button/Button";
 
-export default function DataCategory({ setCategoryState, setCategory }) {
+export default function DataCategory({
+  setGameState,
+  setCategoryState,
+  setCategory,
+}) {
   function clickHandler(input) {
     if (input) {
+      setGameState(true);
       setCategoryState(false);
       setCategory(input);
     }

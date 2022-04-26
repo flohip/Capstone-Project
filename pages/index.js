@@ -3,16 +3,16 @@ import styled from "styled-components";
 import Button from "../src/components/Button/Button";
 import DataCategory from "../src/components/StartMenu/DataCategory";
 import Header from "../src/components/Header/Header";
-import Game from "../src/components/Game/game";
+import Game from "../src/components/Game/Game";
 import Introduction from "../src/components/StartMenu/Introduction";
 
 export default function Home() {
   const [gameState, setGameState] = useState(false);
   const [categoryState, setCategoryState] = useState(false);
-  const [category, setCategory] = useState(false);
+  const [category, setCategory] = useState("none");
   const [introductionState, setIntroductionState] = useState(false);
 
-  console.log(category);
+  console.log("the current category => ", category);
 
   console.log(
     "gameState => ",
@@ -25,11 +25,6 @@ export default function Home() {
 
   function clickHandler(input) {
     switch (input) {
-      case "startGame":
-        setGameState(true);
-        setCategoryState(false);
-        setIntroductionState(false);
-        break;
       case "chooseCategory":
         setGameState(false);
         setCategoryState(true);
@@ -47,7 +42,7 @@ export default function Home() {
   if (gameState) {
     return (
       <StyledAppWindow>
-        <Game setGameState={setGameState} />
+        <Game setGameState={setGameState} category={category} />
       </StyledAppWindow>
     );
   } else if (categoryState) {
@@ -56,6 +51,7 @@ export default function Home() {
         <ContentWrapper>
           <StyledInfo>
             <DataCategory
+              setGameState={setGameState}
               setCategoryState={setCategoryState}
               setCategory={setCategory}
             />
@@ -79,12 +75,8 @@ export default function Home() {
           <Header content={"title"} />
           <StyledInfo>
             <Button
-              onClick={() => clickHandler("startGame")}
-              content={"Neues Spiel"}
-            />
-            <Button
               onClick={() => clickHandler("chooseCategory")}
-              content={"Kategorien"}
+              content={"Neues Spiel"}
             />
             <Button
               onClick={() => clickHandler("readIntroduction")}
