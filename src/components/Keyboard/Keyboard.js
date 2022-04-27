@@ -95,7 +95,7 @@ function getActiveKey(keys) {
   }
 }
 // sets the coloring of the keyboard, when click / input is recognized
-function handleClick(name, keyboardKeys, setkeyboardKeys, keyState, keyName) {
+function handleClick(name, keyboardKeys, setkeyboardKeys) {
   setkeyboardKeys(
     keyboardKeys.map((key) => {
       if (key.state === "active") {

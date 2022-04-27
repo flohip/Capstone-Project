@@ -12,6 +12,7 @@ export default function GameMenu({
   score,
   timeOver,
   category,
+  currentWord,
 }) {
   const gummiBearWidth = 300;
   const fireworksWidth = 300;
@@ -62,6 +63,7 @@ export default function GameMenu({
       <>
         <StyledInfoText>
           <p>Du hast das Wort erraten!!!</p>
+          <StyledCurrentWord>{currentWord}</StyledCurrentWord>
           <Image
             src={gummiBearPicture}
             alt="a picture of gummi bears"
@@ -122,4 +124,12 @@ const StyledScore = styled.span`
   color: hotpink;
   font-size: 3rem;
   text-shadow: -2px 2px black;
+`;
+
+const StyledCurrentWord = styled.p`
+  padding: 0.3rem;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

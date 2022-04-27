@@ -58,6 +58,15 @@ export default function Introduction({ setIntroductionState }) {
             Das Ziel ist es, sämtliche Wörter einer Kategorie innerhalb des
             gegebenen Zeitlimits zu erraten.
           </p>
+          <p>
+            Die Eingabe funktioniert durch Mausklicks oder Tastatureingaben auf
+            dem Computer, sowie Fingerberührungen auf der mobilen Version.
+          </p>
+          <p>
+            Die Tastatureingabe der Buchstaben, erfolgt mit dem jeweiligen
+            physischen Gegenstück und dem bestätigen, mit der Eingabetaste oder
+            Leertaste.
+          </p>
         </StyledContainer>
         <Button
           onClick={() => setIntroductionState(false)}
@@ -68,17 +77,11 @@ export default function Introduction({ setIntroductionState }) {
   );
 }
 
-<a
-  href="https://github.com/flohip/capstone-project"
-  rel="noreferrer"
-  target="_blank"
->
-  Capstone-Project!
-</a>;
-
 const StyledIntroduction = styled.section`
+  position: relative;
+  top: 1rem;
   padding: 1rem;
-  min-height: 100vh;
+  min-height: 50%;
   max-width: 1100px;
   color: var(--fontColor);
   font-size: 1rem;

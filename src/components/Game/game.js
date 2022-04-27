@@ -2,7 +2,6 @@ import styled from "styled-components";
 import WordCategory from "../WordCategory/WordCategory";
 import RequestedWord from "../RequestedWord/RequestedWord";
 import Keyboard, { initialState } from "../Keyboard/Keyboard";
-// import data from "../../data/cityDataGermany.json";
 import getRandomInt from "../../utils/getRandomInt";
 import splitDataName from "../RequestedWord/splitDataName";
 import { useEffect, useState } from "react";
@@ -18,7 +17,7 @@ export default function Game({ setGameState, category }) {
   const data = dataImport(category);
   const scoreData = data.length;
   const [dataArray, setDataArray] = useState(data);
-
+  const [currentWord, setCurrentWord] = useState("");
   const [num, setNum] = useState();
   const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
@@ -134,6 +133,7 @@ export default function Game({ setGameState, category }) {
   useEffect(() => {
     if (checkIfWonArray !== null && gameStarted === true) {
       if (checkIfWonArray.length === 0 || timeOver) {
+        setCurrentWord(dataArray[num].name);
         setGameStarted(false);
         setCheckIfWonArray([false]);
         setkeyboardKeys(initialState);
@@ -187,6 +187,7 @@ export default function Game({ setGameState, category }) {
     setGameStarted(true);
     setWonGame(false);
     setGuessedAllWords(false);
+    setCurrentWord("");
     if (restart) {
       setTimeOver(false);
       setScore(0);
@@ -268,7 +269,8 @@ export default function Game({ setGameState, category }) {
               guessedAllWords={guessedAllWords}
               score={score}
               timeOver={timeOver}
-              category={dataArray[0].category}
+              category={data[0].category}
+              currentWord={currentWord}
             />
           </StyledMain>
           <StyledButtonContainer>
