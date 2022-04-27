@@ -197,7 +197,7 @@ export default function Game({ setGameState, category }) {
     }
   }
   return (
-    <StyledAppWindow>
+    <>
       {gameStarted ? (
         <>
           <StyledGameInfo>
@@ -237,13 +237,13 @@ export default function Game({ setGameState, category }) {
               enterKey={enterKey}
               setEnterKey={setEnterKey}
             />
+            <StyledButtonContainer>
+              <Button
+                onClick={() => setGameState(false)}
+                content={"Spiel beenden"}
+              />
+            </StyledButtonContainer>
           </StyledMain>
-          <StyledButtonContainer>
-            <Button
-              onClick={() => setGameState(false)}
-              content={"Spiel beenden"}
-            />
-          </StyledButtonContainer>
         </>
       ) : (
         <>
@@ -272,25 +272,18 @@ export default function Game({ setGameState, category }) {
               category={data[0].category}
               currentWord={currentWord}
             />
+            <StyledButtonContainer>
+              <Button
+                onClick={() => setGameState(false)}
+                content={"Zum Hauptmenü"}
+              />
+            </StyledButtonContainer>
           </StyledMain>
-          <StyledButtonContainer>
-            <Button
-              onClick={() => setGameState(false)}
-              content={"Zum Hauptmenü"}
-            />
-          </StyledButtonContainer>
         </>
       )}
-    </StyledAppWindow>
+    </>
   );
 }
-
-const StyledAppWindow = styled.div`
-  min-width: 100vw;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-`;
 
 const StyledMain = styled.div`
   @media (min-width: 600px) {
@@ -325,8 +318,6 @@ const StyledGameInfo = styled.div`
 `;
 
 const StyledButtonContainer = styled.div`
-  position: absolute;
-  bottom: 1rem;
   margin-top: 2rem;
   padding: 1rem;
 `;

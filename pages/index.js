@@ -51,8 +51,8 @@ export default function Home() {
   } else if (introductionState) {
     return (
       <StyledAppWindow>
-        <Header content={"capstone"} />
         <ContentWrapper>
+          <Header content={"capstone"} />
           <Introduction setIntroductionState={setIntroductionState} />
         </ContentWrapper>
       </StyledAppWindow>

@@ -78,8 +78,8 @@ export default function Introduction({ setIntroductionState }) {
 }
 
 const StyledIntroduction = styled.section`
-  position: relative;
-  top: 1rem;
+  /* position: relative;
+  top: 1rem; */
   padding: 1rem;
   min-height: 50%;
   max-width: 1100px;
