@@ -3,19 +3,17 @@ import { useEffect, useState } from "react";
 
 export default function WordCategory({ dataArray, num }) {
   const [wordCategory, setWordCategory] = useState("");
-  const [wordFederalState, setWordFederalState] = useState("");
+  const [wordHint, setWordHint] = useState("");
 
   useEffect(() => {
     setWordCategory(dataArray[num].category);
-    setWordFederalState(dataArray[num].federalState);
+    setWordHint(dataArray[num].hint);
   }, [dataArray, num]);
 
   return (
     <>
       <StyledCategory>{wordCategory}</StyledCategory>
-      <StyledFederelState>
-        Auf dem Gebiet von {wordFederalState}
-      </StyledFederelState>
+      <StyledWordHint>{wordHint}</StyledWordHint>
     </>
   );
 }
@@ -28,7 +26,7 @@ const StyledCategory = styled.div`
   flex-wrap: wrap;
 `;
 
-const StyledFederelState = styled.div`
+const StyledWordHint = styled.div`
   color: var(--fontColor);
   font-size: 1rem;
   text-shadow: -1px 0 black;

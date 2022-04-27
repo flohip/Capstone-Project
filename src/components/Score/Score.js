@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-export default function Score({ score }) {
+export default function Score({ score, scoreData }) {
   const [color, setColor] = useState("orange");
   useEffect(() => {
     checkColor(setColor, score);
@@ -9,6 +9,7 @@ export default function Score({ score }) {
   return (
     <StyledScore>
       Score: <div style={{ color: color }}>{score}</div>
+      <div style={{ color: "var(--fontColor)" }}>/ {scoreData}</div>
     </StyledScore>
   );
 }

@@ -8,6 +8,8 @@ export function checkGuess(word, key, oldGuesses) {
     if (guess === word[i]) {
       returnValue.push(true);
       keyStateCorrect = "correct";
+    } else if (" " === word[i]) {
+      returnValue.push(true);
     } else if (oldGuesses[i]) {
       returnValue.push(true);
     } else {

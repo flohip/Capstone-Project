@@ -1,0 +1,182 @@
+[
+  {
+    "id": "1",
+    "name": "Löwe",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Afrika"
+  },
+  {
+    "id": "2",
+    "name": "Tiger",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Asien"
+  },
+  {
+    "id": "3",
+    "name": "Elefant",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Afrika und Asien"
+  },
+  {
+    "id": "4",
+    "name": "Panda",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Asien"
+  },
+  {
+    "id": "5",
+    "name": "Nashorn",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Afrika"
+  },
+  {
+    "id": "6",
+    "name": "Schildkröte",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt zumeist im Wasser"
+  },
+  {
+    "id": "7",
+    "name": "Pinguin",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in kühlen Regionen"
+  },
+  {
+    "id": "8",
+    "name": "Gorilla",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Afrika"
+  },
+  {
+    "id": "9",
+    "name": "Leopard",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Afrika und Asien"
+  },
+  {
+    "id": "10",
+    "name": "Orangutan",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Asien"
+  },
+  {
+    "id": "11",
+    "name": "Krokodil",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt zumeist im Wasser"
+  },
+  {
+    "id": "12",
+    "name": "Seelöwe",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt zumeist im Wasser"
+  },
+  {
+    "id": "13",
+    "name": "Königskobra",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Asien"
+  },
+  {
+    "id": "14",
+    "name": "Känguru",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Australien"
+  },
+  {
+    "id": "15",
+    "name": "Koala",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Australien"
+  },
+  {
+    "id": "16",
+    "name": "Krokodil",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt zumeist im Wasser"
+  },
+  {
+    "id": "17",
+    "name": "Komodowaran",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Asien"
+  },
+  {
+    "id": "18",
+    "name": "Braunbär",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt über dem Äquator"
+  },
+  {
+    "id": "19",
+    "name": "Wolf",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt über dem Äquator"
+  },
+  {
+    "id": "20",
+    "name": "Eule",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt weltweit"
+  },
+  {
+    "id": "21",
+    "name": "Elch",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt über dem Äquator"
+  },
+  {
+    "id": "22",
+    "name": "Puma",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Amerika"
+  },
+  {
+    "id": "23",
+    "name": "Lama",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Südamerika"
+  },
+  {
+    "id": "24",
+    "name": "Blauwal",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt im Meer"
+  },
+  {
+    "id": "25",
+    "name": "Orka",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt im Meer"
+  },
+  {
+    "id": "26",
+    "name": "Delfin",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt im Meer"
+  },
+  {
+    "id": "27",
+    "name": "Hund",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt weltweit"
+  },
+  {
+    "id": "28",
+    "name": "Katze",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt weltweit"
+  },
+  {
+    "id": "29",
+    "name": "Maus",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt weltweit"
+  },
+  {
+    "id": "30",
+    "name": "Adler",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt über dem Äquator"
+  }
+]

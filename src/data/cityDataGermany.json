@@ -1,0 +1,182 @@
+[
+  {
+    "id": "1",
+    "name": "Berlin",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Brandenburg"
+  },
+  {
+    "id": "2",
+    "name": "Hamburg",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Schleswig-Holstein"
+  },
+  {
+    "id": "3",
+    "name": "München",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Bayern"
+  },
+  {
+    "id": "4",
+    "name": "Köln",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  },
+  {
+    "id": "5",
+    "name": "Frankfurt",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Hessen"
+  },
+  {
+    "id": "6",
+    "name": "Stuttgart",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Baden-Württemberg"
+  },
+  {
+    "id": "7",
+    "name": "Düsseldorf",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  },
+  {
+    "id": "8",
+    "name": "Dortmund",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  },
+  {
+    "id": "9",
+    "name": "Essen",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  },
+  {
+    "id": "10",
+    "name": "Leipzig",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Sachsen"
+  },
+  {
+    "id": "11",
+    "name": "Bremen",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Niedersachsen"
+  },
+  {
+    "id": "12",
+    "name": "Dresden",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Sachsen"
+  },
+  {
+    "id": "13",
+    "name": "Hannover",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Niedersachsen"
+  },
+  {
+    "id": "14",
+    "name": "Nürnberg",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Bayern"
+  },
+  {
+    "id": "15",
+    "name": "Duisburg",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  },
+  {
+    "id": "16",
+    "name": "Bochum",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  },
+  {
+    "id": "17",
+    "name": "Wuppertal",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  },
+  {
+    "id": "18",
+    "name": "Bielefeld",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  },
+  {
+    "id": "19",
+    "name": "Bonn",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  },
+  {
+    "id": "20",
+    "name": "Münster",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  },
+  {
+    "id": "21",
+    "name": "Karlsruhe",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Baden-Württemberg"
+  },
+  {
+    "id": "22",
+    "name": "Mannheim",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Baden-Württemberg"
+  },
+  {
+    "id": "23",
+    "name": "Augsburg",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Bayern"
+  },
+  {
+    "id": "24",
+    "name": "Wiesbaden",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Hessen"
+  },
+  {
+    "id": "25",
+    "name": "Gelsenkirchen",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  },
+  {
+    "id": "26",
+    "name": "Mönchengladbach",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  },
+  {
+    "id": "27",
+    "name": "Braunschweig",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Niedersachsen"
+  },
+  {
+    "id": "28",
+    "name": "Chemnitz",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Sachsen"
+  },
+  {
+    "id": "29",
+    "name": "Kiel",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Schleswig-Holstein"
+  },
+  {
+    "id": "30",
+    "name": "Aachen",
+    "category": "Städte in Deutschland",
+    "hint": "Auf dem Gebiet von Nordrhein-Westfalen"
+  }
+]

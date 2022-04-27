@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import Key from "./Key";
-import EnterButton from "./EnterButton";
-import { useEffect, useState } from "react";
+import Button from "../Button/Button";
+import { useEffect } from "react";
 
 export default function Keyboard({
-  submittedGuess,
   setSubmittedGuess,
   keyState,
   setKeystate,
@@ -71,9 +70,10 @@ export default function Keyboard({
           );
         })}
       </StyledKeyboard>
-      <EnterButton
+      <Button
         //sets submittedGuess to the "active" key, when the EnterButton was pressed
-        onSubmitGuess={submitHandler}
+        onClick={submitHandler}
+        content={"Eingabe"}
       />
     </>
   );
@@ -95,7 +95,7 @@ function getActiveKey(keys) {
   }
 }
 // sets the coloring of the keyboard, when click / input is recognized
-function handleClick(name, keyboardKeys, setkeyboardKeys, keyState, keyName) {
+function handleClick(name, keyboardKeys, setkeyboardKeys) {
   setkeyboardKeys(
     keyboardKeys.map((key) => {
       if (key.state === "active") {

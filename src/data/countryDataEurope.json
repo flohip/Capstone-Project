@@ -1,0 +1,284 @@
+[
+  {
+    "id": "1",
+    "name": "Albanien",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südosteuropa"
+  },
+  {
+    "id": "2",
+    "name": "Andorra",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südeuropa"
+  },
+  {
+    "id": "3",
+    "name": "Belgien",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Westeuropa"
+  },
+  {
+    "id": "4",
+    "name": "Bosnien und Herzegowina",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südosteuropa"
+  },
+  {
+    "id": "5",
+    "name": "Bulgarien",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südosteuropa"
+  },
+  {
+    "id": "6",
+    "name": "Dänemark",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Nordeuropa"
+  },
+  {
+    "id": "7",
+    "name": "Deutschland",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "8",
+    "name": "Estland",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "9",
+    "name": "Finnland",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Nordeuropa"
+  },
+  {
+    "id": "10",
+    "name": "Frankreich",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Westeuropa"
+  },
+  {
+    "id": "11",
+    "name": "Griechenland",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südosteuropa"
+  },
+  {
+    "id": "12",
+    "name": "Irland",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Westeuropa"
+  },
+  {
+    "id": "13",
+    "name": "Island",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Nordeuropa"
+  },
+  {
+    "id": "14",
+    "name": "Italien",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südeuropa"
+  },
+  {
+    "id": "15",
+    "name": "Kasachstan",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Osteuropa"
+  },
+  {
+    "id": "16",
+    "name": "Kosovo",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südosteuropa"
+  },
+  {
+    "id": "17",
+    "name": "Kroatien",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "18",
+    "name": "Lettland",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "19",
+    "name": "Liechtenstein",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "20",
+    "name": "Litauen",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "21",
+    "name": "Luxemburg",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "22",
+    "name": "Malta",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südeuropa"
+  },
+  {
+    "id": "23",
+    "name": "Moldawien",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südosteuropa"
+  },
+  {
+    "id": "24",
+    "name": "Monaco",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Westeuropa"
+  },
+  {
+    "id": "25",
+    "name": "Montenegro",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südosteuropa"
+  },
+  {
+    "id": "26",
+    "name": "Niederlande",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Westeuropa"
+  },
+  {
+    "id": "27",
+    "name": "Nordmazedonien",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südosteuropa"
+  },
+  {
+    "id": "28",
+    "name": "Norwegen",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Nordeuropa"
+  },
+  {
+    "id": "29",
+    "name": "Österreich",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "30",
+    "name": "Polen",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "31",
+    "name": "Portugal",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südeuropa"
+  },
+  {
+    "id": "32",
+    "name": "Rumänien",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südosteuropa"
+  },
+  {
+    "id": "33",
+    "name": "Russland",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Osteuropa"
+  },
+  {
+    "id": "34",
+    "name": "San Marino",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südeuropa"
+  },
+  {
+    "id": "35",
+    "name": "Schweden",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Nordeuropa"
+  },
+  {
+    "id": "36",
+    "name": "Schweiz",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "37",
+    "name": "Serbien",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südosteuropa"
+  },
+  {
+    "id": "38",
+    "name": "Slowakei",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "39",
+    "name": "Slowenien",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "40",
+    "name": "Spanien",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südeuropa"
+  },
+  {
+    "id": "41",
+    "name": "Tschechien",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "42",
+    "name": "Türkei",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südosteuropa"
+  },
+  {
+    "id": "43",
+    "name": "Ukraine",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Osteuropa"
+  },
+  {
+    "id": "44",
+    "name": "Ungarn",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Mitteleuropa"
+  },
+  {
+    "id": "45",
+    "name": "Vatikan",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Südeuropa"
+  },
+  {
+    "id": "46",
+    "name": "Vereinigtes Königreich",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Westeuropa"
+  },
+  {
+    "id": "47",
+    "name": "Belarus",
+    "category": "Länder in Europa",
+    "hint": "Auf dem Gebiet von Osteuropa"
+  }
+]

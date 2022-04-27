@@ -1,13 +1,16 @@
+import { createGlobalStyle } from "styled-components";
+
+export default createGlobalStyle`
 :root {
   --backgroundColor: rgb(10, 78, 89);
   --fontColor: rgb(255, 237, 212);
+  --buttonBorderColor: rgb(230, 212, 187);
 }
 
-html,
-body {
+html {
   padding: 0;
   margin: 0;
-
+  min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background: rgb(10, 78, 89);
@@ -40,3 +43,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+`;
