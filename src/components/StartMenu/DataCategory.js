@@ -21,11 +21,11 @@ export default function DataCategory({
         content={"Städte in Deutschland"}
       />
       <Button
-        onClick={() => clickHandler("countryDataWorldWide")}
-        content={"Länder der Welt"}
+        onClick={() => clickHandler("countryDataEurope")}
+        content={"Länder in Europa"}
       />
       <Button
-        onClick={() => clickHandler("AnimalsWorldWide")}
+        onClick={() => clickHandler("animalDataWorldwide")}
         content={"Tiere der Welt"}
       />
     </StyledContainer>

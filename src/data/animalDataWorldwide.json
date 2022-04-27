@@ -2,181 +2,181 @@
   {
     "id": "1",
     "name": "Löwe",
-    "category": "Stadt in Deutschland",
-    "federalState": "Brandenburg"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Afrika"
   },
   {
     "id": "2",
     "name": "Tiger",
-    "category": "Stadt in Deutschland",
-    "federalState": "Schleswig-Holstein"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Asien"
   },
   {
     "id": "3",
     "name": "Elefant",
-    "category": "Stadt in Deutschland",
-    "federalState": "Bayern"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Afrika und Asien"
   },
   {
     "id": "4",
     "name": "Panda",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Asien"
   },
   {
     "id": "5",
     "name": "Nashorn",
-    "category": "Stadt in Deutschland",
-    "federalState": "Hessen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Afrika"
   },
   {
     "id": "6",
     "name": "Schildkröte",
-    "category": "Stadt in Deutschland",
-    "federalState": "Baden-Württemberg"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt zumeist im Wasser"
   },
   {
     "id": "7",
     "name": "Pinguin",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in kühlen Regionen"
   },
   {
     "id": "8",
     "name": "Gorilla",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Afrika"
   },
   {
     "id": "9",
     "name": "Leopard",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Afrika und Asien"
   },
   {
     "id": "10",
     "name": "Orangutan",
-    "category": "Stadt in Deutschland",
-    "federalState": "Sachsen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Asien"
   },
   {
     "id": "11",
-    "name": "Wasserbüffel",
-    "category": "Stadt in Deutschland",
-    "federalState": "Niedersachsen"
+    "name": "Krokodil",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt zumeist im Wasser"
   },
   {
     "id": "12",
     "name": "Seelöwe",
-    "category": "Stadt in Deutschland",
-    "federalState": "Sachsen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt zumeist im Wasser"
   },
   {
     "id": "13",
-    "name": "Kobra",
-    "category": "Stadt in Deutschland",
-    "federalState": "Niedersachsen"
+    "name": "Königskobra",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Asien"
   },
   {
     "id": "14",
     "name": "Känguru",
-    "category": "Stadt in Deutschland",
-    "federalState": "Bayern"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Australien"
   },
   {
     "id": "15",
     "name": "Koala",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Australien"
   },
   {
     "id": "16",
     "name": "Krokodil",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt zumeist im Wasser"
   },
   {
     "id": "17",
     "name": "Komodowaran",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Asien"
   },
   {
     "id": "18",
     "name": "Braunbär",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt über dem Äquator"
   },
   {
     "id": "19",
     "name": "Wolf",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt über dem Äquator"
   },
   {
     "id": "20",
-    "name": "Hirsch",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "name": "Eule",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt weltweit"
   },
   {
     "id": "21",
     "name": "Elch",
-    "category": "Stadt in Deutschland",
-    "federalState": "Baden-Württemberg"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt über dem Äquator"
   },
   {
     "id": "22",
     "name": "Puma",
-    "category": "Stadt in Deutschland",
-    "federalState": "Baden-Württemberg"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Amerika"
   },
   {
     "id": "23",
     "name": "Lama",
-    "category": "Stadt in Deutschland",
-    "federalState": "Bayern"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt in Südamerika"
   },
   {
     "id": "24",
     "name": "Blauwal",
-    "category": "Stadt in Deutschland",
-    "federalState": "Hessen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt im Meer"
   },
   {
     "id": "25",
-    "name": "Orkawal",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "name": "Orka",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt im Meer"
   },
   {
     "id": "26",
     "name": "Delfin",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt im Meer"
   },
   {
     "id": "27",
     "name": "Hund",
-    "category": "Stadt in Deutschland",
-    "federalState": "Niedersachsen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt weltweit"
   },
   {
     "id": "28",
     "name": "Katze",
-    "category": "Stadt in Deutschland",
-    "federalState": "Sachsen"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt weltweit"
   },
   {
     "id": "29",
     "name": "Maus",
-    "category": "Stadt in Deutschland",
-    "federalState": "Schleswig-Holstein"
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt weltweit"
   },
   {
     "id": "30",
-    "name": "Papagei",
-    "category": "Stadt in Deutschland",
-    "federalState": "Nordrhein-Westfalen"
+    "name": "Adler",
+    "category": "Tiere der Welt",
+    "hint": "Dieses Tier wohnt über dem Äquator"
   }
 ]

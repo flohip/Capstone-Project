@@ -11,6 +11,7 @@ export default function GameMenu({
   guessedAllWords,
   score,
   timeOver,
+  category,
 }) {
   const gummiBearWidth = 300;
   const fireworksWidth = 300;
@@ -81,7 +82,7 @@ export default function GameMenu({
         <StyledInfoText>
           <p>Mal sehen wie dein Wissen über</p>
           <p>
-            <StyledWord>deutsche Großstädte</StyledWord> ist...
+            <StyledWord>{category}</StyledWord> ist...
           </p>
         </StyledInfoText>
         <Button onClick={() => startTheGame(true)} content={"Spiel starten"} />

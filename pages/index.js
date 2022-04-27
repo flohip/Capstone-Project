@@ -12,17 +12,6 @@ export default function Home() {
   const [category, setCategory] = useState("none");
   const [introductionState, setIntroductionState] = useState(false);
 
-  console.log("the current category => ", category);
-
-  console.log(
-    "gameState => ",
-    gameState,
-    "categoryState => ",
-    categoryState,
-    "introductionState => ",
-    introductionState
-  );
-
   function clickHandler(input) {
     switch (input) {
       case "chooseCategory":

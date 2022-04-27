@@ -2,9 +2,7 @@ import styled from "styled-components";
 import WordCategory from "../WordCategory/WordCategory";
 import RequestedWord from "../RequestedWord/RequestedWord";
 import Keyboard, { initialState } from "../Keyboard/Keyboard";
-import data from "../../data/cityDataGermany.json";
-import dataList from "../../data/dataImport";
-console.log(dataList);
+// import data from "../../data/cityDataGermany.json";
 import getRandomInt from "../../utils/getRandomInt";
 import splitDataName from "../RequestedWord/splitDataName";
 import { useEffect, useState } from "react";
@@ -14,10 +12,13 @@ import Score from "../Score/Score";
 import Clock, { formatDisplayTime } from "../Clock/Clock";
 import checkTime from "../../utils/checkTime";
 import Button from "../Button/Button";
+import dataImport from "../../data/dataImport";
 
 export default function Game({ setGameState, category }) {
+  const data = dataImport(category);
   const scoreData = data.length;
   const [dataArray, setDataArray] = useState(data);
+
   const [num, setNum] = useState();
   const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
@@ -38,7 +39,7 @@ export default function Game({ setGameState, category }) {
   const [keyboardKeys, setkeyboardKeys] = useState(initialState);
 
   //clock
-  const DEFAULT_GAME_TIME = 120;
+  const DEFAULT_GAME_TIME = scoreData * 4;
   const [gameDuration, setGameDuration] = useState(DEFAULT_GAME_TIME);
   const [maxGameDuration, setMaxGameDuration] = useState(DEFAULT_GAME_TIME);
   const [display, setDisplay] = useState("");
@@ -47,6 +48,7 @@ export default function Game({ setGameState, category }) {
   const [currentKey, setCurrentKey] = useState("");
   const [enterKey, setEnterKey] = useState(false);
   const [pressedKey, setPressedKey] = useState("");
+
   // physical keyboard eventlistener
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
@@ -266,6 +268,7 @@ export default function Game({ setGameState, category }) {
               guessedAllWords={guessedAllWords}
               score={score}
               timeOver={timeOver}
+              category={dataArray[0].category}
             />
           </StyledMain>
           <StyledButtonContainer>
