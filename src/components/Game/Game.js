@@ -1,17 +1,17 @@
 import styled from "styled-components";
-import WordCategory from "../src/components/WordCategory/WordCategory";
-import RequestedWord from "../src/components/RequestedWord/RequestedWord";
-import Keyboard, { initialState } from "../src/components/Keyboard/Keyboard";
-import getRandomInt from "../src/utils/getRandomInt";
-import splitDataName from "../src/components/RequestedWord/splitDataName";
+import WordCategory from "../WordCategory/WordCategory";
+import RequestedWord from "../RequestedWord/RequestedWord";
+import Keyboard, { initialState } from "../Keyboard/Keyboard";
+import getRandomInt from "../../utils/getRandomInt";
+import splitDataName from "../RequestedWord/splitDataName";
 import { useEffect, useState } from "react";
-import { checkGuess } from "../src/utils/checkGuess";
-import GameMenu from "../src/components/GameMenu/GameMenu";
-import Score from "../src/components/Score/Score";
-import Clock, { formatDisplayTime } from "../src/components/Clock/Clock";
-import checkTime from "../src/utils/checkTime";
-import Button from "../src/components/Button/Button";
-import dataImport from "../src/data/dataImport";
+import { checkGuess } from "../../utils/checkGuess";
+import GameMenu from "../GameMenu/GameMenu";
+import Score from "../Score/Score";
+import Clock, { formatDisplayTime } from "../Clock/Clock";
+import checkTime from "../../utils/checkTime";
+import Button from "../Button/Button";
+import dataImport from "../../data/dataImport";
 
 export default function Game({ setGameState, category }) {
   const data = dataImport(category);
