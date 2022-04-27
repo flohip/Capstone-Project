@@ -78,14 +78,13 @@ export default function Introduction({ setIntroductionState }) {
 }
 
 const StyledIntroduction = styled.section`
-  position: relative;
-  top: 1rem;
   padding: 1rem;
   min-height: 50%;
   max-width: 1100px;
   color: var(--fontColor);
   font-size: 1rem;
   margin: 1rem;
+  margin-top: 3rem;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto 100px;
