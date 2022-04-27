@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "../src/components/Button/Button";
 import DataCategory from "../src/components/StartMenu/DataCategory";
 import Header from "../src/components/Header/Header";
-import Game from "../src/components/Game/Game.js";
+import Game from "./Game.js";
 import Introduction from "../src/components/StartMenu/Introduction";
 
 export default function Home() {
