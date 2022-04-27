@@ -37,7 +37,7 @@ const StyledTitleHeader = styled.h1`
   font-size: inherit;
   text-align: center;
 
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -69,7 +69,7 @@ const StyledHeader = styled.h1`
   font-size: inherit;
   text-align: center;
 
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
